@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Crecimiento | Punta Pacifica Realty | Junio 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .metric-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .brand-text {
+            color: #0097A7; /* Color de marca para títulos de secciones */
+        }
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #0097A7; /* Color de marca para títulos de secciones */
+        }
+        .action-button {
+            background-color: #0097A7; 
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-align: center;
+            transition: background-color 0.2s ease-in-out;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .action-button:hover {
+            background-color: #007f8a; 
+        }
+        /* Estilos para el Modal (Pop-up) */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            max-width: 90%;
+            width: 700px;
+            position: relative;
+            max-height: 90vh; 
+            overflow-y: auto; 
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6b7280;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-[#0097A7] shadow-md p-6">
+        <div class="container mx-auto max-w-6xl flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold text-white">Punta Pacifica Realty - A Spotlight to Panama</h1>
+                <div class="flex items-center gap-2 text-white/80">
+                    <!-- Logo de YouTube SVG -->
+                    <svg class="w-6 h-6" viewBox="0 0 28 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M27.4272 3.12317C27.1018 1.89317 26.1344 0.924916 24.9072 0.600666C22.7272 0 14 0 14 0C14 0 5.27273 0 3.09273 0.600666C1.86545 0.924916 0.898182 1.89317 0.572727 3.12317C0 5.35317 0 10 0 10C0 10 0 14.6468 0.572727 16.8768C0.898182 18.1068 1.86545 19.0751 3.09273 19.3993C5.27273 20 14 20 14 20C14 20 22.7272 20 24.9072 19.3993C26.1344 19.0751 27.1018 18.1068 27.4272 16.8768C28 14.6468 28 10 28 10C28 10 28 5.35317 27.4272 3.12317ZM11.2 14.2857V5.71429L18.48 10L11.2 14.2857Z"/>
+                    </svg>
+                    <p>Reporte de Crecimiento de YouTube</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <h2 class="text-xl font-semibold text-white">Junio 2025</h2>
+                <p class="text-sm text-white/80">Versión Interactiva</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto max-w-6xl p-4 md:p-8">
+
+        <section id="resumen" class="mb-12">
+            <h2 class="section-title">Resumen Ejecutivo</h2>
+            <div class="bg-teal-50 border-l-4 border-teal-500 text-teal-800 p-4 mb-8 rounded-r-lg">
+                <p class="font-bold">Un Mes de Aprendizaje Estratégico</p>
+                <p class="text-sm">Junio fue un mes de valiosos aprendizajes. La entrevista en español, por ejemplo, tuvo un inicio lento en vistas orgánicas, pero su reciente subtitulación abre una nueva puerta para su crecimiento. Este reporte se enfoca en interpretar estas métricas como oportunidades y en destacar la sólida base de rendimiento del canal.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="metric-card p-6">
+                    <h3 class="font-semibold text-gray-500">Vistas Orgánicas</h3>
+                    <p class="text-4xl font-bold my-2">10,285</p>
+                    <div class="flex items-center text-yellow-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                        <span>Ajuste estratégico vs. Mayo</span>
+                    </div>
+                     <p class="text-xs text-gray-400 mt-auto pt-2">Total (incl. Ads): 272,464</p>
+                </div>
+                <div class="metric-card p-6">
+                    <h3 class="font-semibold text-gray-500">Nuevos Suscriptores</h3>
+                    <p class="text-4xl font-bold my-2">94</p>
+                    <div class="flex items-center text-yellow-600">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" /></svg>
+                        <span>Consolidación de audiencia</span>
+                    </div>
+                </div>
+                
+                <div class="metric-card p-6">
+                    <h3 class="font-semibold text-gray-500 mb-3">Videos del Mes</h3>
+                    <div class="space-y-3 text-xs flex-grow">
+                        <div class="p-2 rounded-md bg-gray-50">
+                           <p class="font-semibold truncate">Panama Through the Eyes...</p>
+                           <p><b>319</b> Vistas | <b>4.5%</b> CTR</p>
+                        </div>
+                        <div class="p-2 rounded-md bg-gray-50">
+                           <p class="font-semibold truncate">Panamá: El secreto mejor...</p>
+                           <p><b>203</b> Vistas | <b>3.1%</b> CTR</p>
+                        </div>
+                    </div>
+                    <button id="openModalBtn" class="text-teal-600 hover:underline font-semibold mt-4 text-sm text-center">Análisis Detallado</button>
+                </div>
+                 <div class="metric-card p-6">
+                    <h3 class="font-semibold text-gray-500">CTR Promedio del Canal</h3>
+                    <p class="text-4xl font-bold my-2">5.3%</p>
+                    <div class="flex items-center text-green-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd" /></svg>
+                        <span>+0.3% vs. Mayo</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="metric-card p-6">
+                    <h3 class="font-semibold text-lg mb-4">Vistas Orgánicas - Desempeño Anual</h3>
+                    <div class="relative h-72">
+                        <canvas id="vistasChart"></canvas>
+                    </div>
+                </div>
+                <div class="metric-card p-6">
+                    <h3 class="font-semibold text-lg mb-4">Suscriptores - Desempeño Anual</h3>
+                    <div class="relative h-72">
+                        <canvas id="suscriptoresChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="rendimiento-videos" class="mb-12">
+            <h2 class="section-title">Rendimiento de Videos de Junio</h2>
+            <div class="metric-card p-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
+                    <div class="border-b md:border-b-0 md:border-r pb-4 md:pb-0 md:pr-4">
+                        <h3 class="font-semibold text-lg mb-2">Vistas Orgánicas</h3>
+                        <div class="relative h-40">
+                            <canvas id="videosVistasChart"></canvas>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold text-lg mb-2">Click-Through Rate (CTR)</h3>
+                        <div class="relative h-40">
+                            <canvas id="videosCTRChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="joyas-archivo" class="mb-12">
+            <h2 class="section-title">Las Joyas del Mes: El Motor Silencioso del Canal</h2>
+            <div class="metric-card p-6">
+                <p class="text-gray-600 mb-4">Además de los videos nuevos, el catálogo histórico del canal sigue atrayendo vistas valiosas cada mes. Estos fueron los videos "evergreen" más vistos en junio, demostrando su relevancia y valor a largo plazo.</p>
+                <div class="text-center">
+                    <button id="openJoyasModalBtn" class="action-button">Ver el Top 4 del Catálogo</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="fuentes" class="mb-12">
+            <h2 class="section-title">¿Cómo Nos Encontraron?</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
+                <div class="lg:col-span-3 metric-card p-6">
+                     <h3 class="font-semibold text-lg mb-4">Fuentes de Tráfico Orgánico (Junio)</h3>
+                     <div class="relative h-80">
+                        <canvas id="fuentesChart"></canvas>
+                     </div>
+                </div>
+                <div class="lg:col-span-2 metric-card p-6">
+                    <h3 class="font-bold text-lg mb-4 brand-text">Análisis de Fuentes</h3>
+                    <div class="text-sm space-y-4">
+                        <div class="bg-gray-50 p-3 rounded-lg">
+                             <p class="font-bold">1. Búsqueda de YouTube (28.3%)</p>
+                             <p class="text-gray-600">Sigue siendo la principal fuente de descubrimiento. La estrategia de SEO en títulos y descripciones está funcionando de manera consistente.</p>
+                        </div>
+                         <div class="bg-gray-50 p-3 rounded-lg">
+                             <p class="font-bold">2. Tráfico Externo (25.7%)</p>
+                             <p class="text-gray-600">Un pilar fundamental. Demuestra que la promoción fuera de YouTube (web, newsletters) es altamente efectiva para atraer audiencia.</p>
+                        </div>
+                        <div class="bg-gray-50 p-3 rounded-lg">
+                             <p class="font-bold">3. Funciones de Exploración (13.0%)</p>
+                             <p class="text-gray-600">Aunque bajó un poco, sigue siendo una fuente clave de nuevas audiencias gracias a las recomendaciones del algoritmo de YouTube.</p>
+                        </div>
+                        <p class="mt-4 p-3 bg-teal-100 text-teal-800 rounded-lg"><span class="font-bold">Conclusión:</span> Se mantiene una base sólida de tráfico proactivo (Búsqueda) y de promoción (Externo), lo que indica una marca fuerte y bien posicionada.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="plan">
+            <h2 class="section-title">Plan de Acción para Julio 2025</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="metric-card p-6">
+                    <h3 class="font-bold text-lg mb-2 brand-text">🎯 Capitalizar Aprendizaje</h3>
+                    <p class="text-sm">Implementar subtítulos en inglés desde el día 1 es una prioridad para maximizar el alcance inmediato. El video "El secreto..." ahora tiene potencial de crecimiento a largo plazo gracias a esta mejora.</p>
+                </div>
+                <div class="metric-card p-6">
+                    <h3 class="font-bold text-lg mb-2 brand-text">🤝 Potenciar Formato Exitoso</h3>
+                    <p class="text-sm">El video de entrevistas ("Through the Eyes...") tuvo mejor rendimiento orgánico. Replicar este formato con otros expatriados o locales es una estrategia recomendada.</p>
+                </div>
+                <div class="metric-card p-6">
+                    <h3 class="font-bold text-lg mb-2 brand-text">▶️ Optimizar Miniaturas</h3>
+                    <p class="text-sm">El video "El secreto mejor guardado" tuvo un CTR bajo (3.1%). Realizar pruebas A/B de miniaturas para este tipo de contenido es crucial para atraer más clics de la audiencia de exploración.</p>
+                </div>
+                 <div class="metric-card p-6">
+                    <h3 class="font-bold text-lg mb-2 brand-text">🔗 Foco en Búsqueda (SEO)</h3>
+                    <p class="text-sm">Dado que "Búsqueda" es la principal fuente de tráfico, orientar el próximo video a una palabra clave de alto volumen como "costo de vida en Panamá" o "mejores zonas para vivir en Panamá".</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-6 mt-8 border-t">
+        <p class="text-gray-500 text-sm">&copy; 2025 Punta Pacifica Realty | Reporte generado para uso interno.</p>
+    </footer>
+
+    <!-- Modal para Videos del Mes -->
+    <div id="videoModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span id="closeModalBtn" class="modal-close">&times;</span>
+            <h2 class="section-title">Análisis Detallado: Videos de Junio</h2>
+            
+            <div class="mb-6 pb-6 border-b">
+                <h3 class="text-xl font-bold mb-3 brand-text">Panamá: El secreto mejor guardado de Latinoamérica</h3>
+                <p class="text-sm mb-3"><span class="font-semibold">Datos Orgánicos Clave:</span></p>
+                <div class="grid grid-cols-2 gap-4 text-center mb-4">
+                    <div>
+                        <p class="text-sm text-gray-500">Vistas Orgánicas</p>
+                        <p class="text-3xl font-bold">203</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">CTR</p>
+                        <p class="text-3xl font-bold">3.1%</p>
+                    </div>
+                </div>
+                <div class="text-sm bg-gray-100 p-3 rounded-md mb-4">
+                    <p class="font-semibold block mb-2">Análisis de Rendimiento y Oportunidad:</p>
+                    <p>Este video es un caso de estudio sobre el poder de la optimización. Aunque su título y miniatura siempre han estado en español, la adición de **subtítulos en inglés el 27 de junio** le ha proporcionado al algoritmo de YouTube una transcripción completa del contenido. Esto le permite **sugerir el video a una audiencia anglófona mucho más calificada y relevante**, lo que explica el drástico aumento del CTR en "Videos Sugeridos" (de 1.7% a 7.1% post-subtitulación). Ahora, el video tiene un nuevo potencial de crecimiento a largo plazo.</p>
+                </div>
+                <a href="https://youtu.be/R2_8-dcSQOY" target="_blank" class="action-button">Ver Video en YouTube</a>
+            </div>
+
+            <div>
+                <h3 class="text-xl font-bold mb-3 brand-text">Panama Through the Eyes of Those Who Live It</h3>
+                 <p class="text-sm mb-3"><span class="font-semibold">Datos Orgánicos Clave:</span></p>
+                <div class="grid grid-cols-2 gap-4 text-center mb-4">
+                     <div>
+                        <p class="text-sm text-gray-500">Vistas Orgánicas</p>
+                        <p class="text-3xl font-bold">319</p>
+                    </div>
+                    <div>
+                        <p class="text-sm text-gray-500">CTR</p>
+                        <p class="text-3xl font-bold">4.5%</p>
+                    </div>
+                </div>
+                <div class="text-sm bg-gray-100 p-3 rounded-md mb-4">
+                    <p class="font-semibold block mb-2">Análisis de rendimiento:</p>
+                    <p>Con más vistas orgánicas y un CTR más saludable de 4.5%, este formato de entrevista demostró ser más atractivo para la audiencia. El enfoque en historias personales y experiencias directas parece resonar mejor, generando más interés y clics. Es el formato a potenciar en los próximos meses.</p>
+                </div>
+                <a href="https://youtu.be/zmzaxFYJcgM" target="_blank" class="action-button">Ver Video en YouTube</a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para Joyas del Archivo -->
+    <div id="joyasModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span id="closeJoyasModalBtn" class="modal-close">&times;</span>
+            <h2 class="section-title">Joyas del Archivo: Top 4 de Junio</h2>
+            <div class="space-y-4">
+                <div class="p-4 rounded-lg bg-gray-50 border border-gray-200">
+                    <h3 class="text-lg font-bold brand-text">1. Discover Margaritaville Beach Resort</h3>
+                    <p><b class="text-2xl">386</b> Vistas en Junio | <span class="text-green-600 font-semibold">14.2% CTR</span></p>
+                    <p class="text-sm text-gray-600 mt-2"><b>Análisis Estratégico:</b> Impulsado mayoritariamente por **Tráfico Externo (75.1%)**, este video demuestra el inmenso poder de una marca reconocida. Su éxito no depende del algoritmo de YouTube, sino de la promoción activa y el interés preexistente en "Margaritaville", lo que lo convierte en un imán de tráfico de alta intención desde la web de PPR y otras fuentes directas.</p>
+                    <a href="https://www.youtube.com/watch?v=yd5-7zF03mE" target="_blank" class="text-teal-600 hover:underline font-semibold mt-2 inline-block">Ver Video</a>
+                </div>
+                <div class="p-4 rounded-lg bg-gray-50 border border-gray-200">
+                    <h3 class="text-lg font-bold brand-text">2. Ipanema at Costa del Este - Model Apartment Tour</h3>
+                    <p><b class="text-2xl">218</b> Vistas en Junio | <span class="text-green-600 font-semibold">8.9% CTR</span></p>
+                    <p class="text-sm text-gray-600 mt-2"><b>Análisis Estratégico:</b> Este video es el pilar del SEO del canal. Con un 29.2% de su tráfico viniendo de **Búsqueda de YouTube**, responde perfectamente a la intención del usuario que busca "apartamento en Costa del Este". Su éxito continuo valida la estrategia de crear contenido específico para propiedades y ubicaciones clave.</p>
+                     <a href="https://www.youtube.com/watch?v=YNVy-u2EL0M" target="_blank" class="text-teal-600 hover:underline font-semibold mt-2 inline-block">Ver Video</a>
+                </div>
+                <div class="p-4 rounded-lg bg-gray-50 border border-gray-200">
+                    <h3 class="text-lg font-bold brand-text">3. Inside the MOST LUXURIOUS Home in Panama</h3>
+                    <p><b class="text-2xl">186</b> Vistas en Junio | <span class="text-green-600 font-semibold">9.6% CTR</span></p>
+                    <p class="text-sm text-gray-600 mt-2"><b>Análisis Estratégico:</b> Un claro ejemplo de contenido que atrae al algoritmo. Impulsado por **Búsqueda (42.5%)** y **Funciones de Exploración (26.9%)**, su título aspiracional y la promesa de exclusividad lo hacen ideal para ser recomendado a nuevas audiencias. Es la puerta de entrada para espectadores que sueñan con el lujo en Panamá.</p>
+                     <a href="https://www.youtube.com/watch?v=MKT9ovG6CEs" target="_blank" class="text-teal-600 hover:underline font-semibold mt-2 inline-block">Ver Video</a>
+                </div>
+                 <div class="p-4 rounded-lg bg-gray-50 border border-gray-200">
+                    <h3 class="text-lg font-bold brand-text">4. Luxurious Panama Penthouse Tour | The Towers</h3>
+                    <p><b class="text-2xl">141</b> Vistas en Junio | <span class="text-green-600 font-semibold">11.6% CTR</span></p>
+                    <p class="text-sm text-gray-600 mt-2"><b>Análisis Estratégico:</b> Similar al anterior, este video combina el poder de la **Búsqueda (36.9%)** con el de las **Funciones de Exploración (28.6%)**. Confirma que los "tours" de propiedades de alta gama con nombres específicos ("The Towers") son un formato ganador, atrayendo a un nicho calificado y siendo promovido por YouTube.</p>
+                     <a href="https://www.youtube.com/watch?v=JukAEe1NdQ8" target="_blank" class="text-teal-600 hover:underline font-semibold mt-2 inline-block">Ver Video</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        // --- DATOS PARA GRÁFICOS ---
+        const junioData = {
+            vistas: 10285,
+            suscriptores: 94,
+            ctrCanal: 5.3,
+            fuentes: {
+                labels: ['Búsqueda de YouTube', 'Externa', 'Funciones de Exploración', 'Videos Sugeridos', 'Otros'],
+                values: [28.3, 25.7, 13.0, 12.5, 20.5]
+            },
+            videos: {
+                labels: ["Panama Through...", "Panamá: Secreto..."],
+                vistas: [319, 203],
+                ctr: [4.5, 3.1]
+            }
+        };
+
+        // Gráfico 1: Evolución de Vistas Orgánicas (ANUAL)
+        const vistasData = {
+            labels: ['Jul 24', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic', 'Ene 25', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+            values: [12783, 13628, 13845, 11474, 11929, 11115, 12188, 13533, 10799, 13313, 11617, junioData.vistas]
+        };
+        const vistasCtx = document.getElementById('vistasChart').getContext('2d');
+        new Chart(vistasCtx, {
+            type: 'bar',
+            data: {
+                labels: vistasData.labels,
+                datasets: [{
+                    label: 'Vistas Orgánicas',
+                    data: vistasData.values,
+                    backgroundColor: 'rgba(0, 151, 167, 0.7)', 
+                    borderColor: 'rgba(0, 151, 167, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: { y: { beginAtZero: true, title: { display: true, text: 'Vistas Orgánicas' } } },
+                responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }
+            }
+        });
+        
+        // Gráfico 2: Evolución de Suscriptores (Anual)
+        const suscriptoresData = {
+            labels: ['Jul 24', 'Ago', 'Sep', 'Oct', 'Nov', 'Dic', 'Ene 25', 'Feb', 'Mar', 'Abr', 'May', 'Jun'],
+            values: [73, 73, 57, 53, 74, 76, 69, 74, 109, 70, 108, junioData.suscriptores]
+        };
+        const suscriptoresCtx = document.getElementById('suscriptoresChart').getContext('2d');
+        new Chart(suscriptoresCtx, {
+            type: 'bar',
+            data: {
+                labels: suscriptoresData.labels,
+                datasets: [{
+                    label: 'Suscriptores',
+                    data: suscriptoresData.values,
+                    backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                    borderColor: 'rgba(16, 185, 129, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: { y: { beginAtZero: true, title: { display: true, text: 'Nuevos Suscriptores' } } },
+                responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }
+            }
+        });
+
+        // Gráfico 3A: Vistas Orgánicas de Videos de Junio
+        new Chart(document.getElementById('videosVistasChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: junioData.videos.labels,
+                datasets: [{
+                    label: 'Vistas Orgánicas',
+                    data: junioData.videos.vistas,
+                    backgroundColor: ['rgba(0, 151, 167, 0.7)', 'rgba(16, 185, 129, 0.7)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                scales: { x: { beginAtZero: true } },
+                responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }
+            }
+        });
+
+        // Gráfico 3B: CTR de Videos de Junio
+        new Chart(document.getElementById('videosCTRChart').getContext('2d'), {
+            type: 'bar',
+            data: {
+                labels: junioData.videos.labels,
+                datasets: [{
+                    label: 'CTR (%)',
+                    data: junioData.videos.ctr,
+                    backgroundColor: ['rgba(0, 151, 167, 0.7)', 'rgba(16, 185, 129, 0.7)'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                scales: { x: { beginAtZero: true, suggestedMax: 10 } },
+                responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }
+            }
+        });
+
+
+        // Gráfico 4: Fuentes de Tráfico
+        const fuentesCtx = document.getElementById('fuentesChart').getContext('2d');
+        const tooltipDescriptions = {
+            'Búsqueda de YouTube': 'Usuarios que encontraron el video buscando activamente términos en YouTube.',
+            'Externa': 'Tráfico desde sitios web y apps que enlazan a los videos (e.g., web de PPR, newsletters).',
+            'Funciones de Exploración': 'Vistas generadas por YouTube al recomendar el video en la página de inicio o en la sección "Explorar".',
+            'Videos Sugeridos': 'Vistas de usuarios que vieron el video porque YouTube lo sugirió al lado o después de otro video.',
+            'Otros': 'Agrupa fuentes de tráfico menores o no clasificadas por YouTube.'
+        };
+        new Chart(fuentesCtx, {
+            type: 'doughnut',
+            data: {
+                labels: junioData.fuentes.labels,
+                datasets: [{
+                    label: 'Fuentes de Tráfico Orgánico',
+                    data: junioData.fuentes.values,
+                    backgroundColor: [ '#0097A7', '#00BCD4', '#4DD0E1', '#80DEEA', '#B2EBF2' ],
+                    borderColor: '#ffffff',
+                    borderWidth: 2
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'top'
+                    },
+                    tooltip: {
+                        callbacks: {
+                            afterBody: function(context) {
+                                const label = context[0].label;
+                                return tooltipDescriptions[label] || '';
+                            }
+                        }
+                    }
+                }
+            }
+        });
+        
+        // --- LÓGICA DE MODALES ---
+        const openModalBtn = document.getElementById('openModalBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        const videoModal = document.getElementById('videoModal');
+
+        openModalBtn.addEventListener('click', () => videoModal.classList.remove('hidden'));
+        closeModalBtn.addEventListener('click', () => videoModal.classList.add('hidden'));
+        videoModal.addEventListener('click', (event) => {
+            if (event.target === videoModal) videoModal.classList.add('hidden');
+        });
+
+        const openJoyasModalBtn = document.getElementById('openJoyasModalBtn');
+        const closeJoyasModalBtn = document.getElementById('closeJoyasModalBtn');
+        const joyasModal = document.getElementById('joyasModal');
+
+        openJoyasModalBtn.addEventListener('click', () => joyasModal.classList.remove('hidden'));
+        closeJoyasModalBtn.addEventListener('click', () => joyasModal.classList.add('hidden'));
+        joyasModal.addEventListener('click', (event) => {
+            if (event.target === joyasModal) joyasModal.classList.add('hidden');
+        });
+
+    </script>
+
+</body>
+</html>
