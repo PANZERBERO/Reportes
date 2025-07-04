@@ -3,913 +3,124 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Análisis de Instagram Portillo - Mayo 2025</title>
-    <!-- Tailwind CSS CDN for styling -->
+    <title>Portafolio de Reportes - Marketing Digital</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- D3.js CDN for data visualization -->
-    <script src="https://d3js.org/d3.v7.min.js"></script>
-    <!-- Font Awesome for icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #ffffff; /* Changed to white */
+            background-color: #f8fafc;
         }
-        .container {
-            max-width: 1200px;
+        .header-bg {
+            background-color: #0097A7;
         }
-        .card {
-            background-color: #ffffff;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            padding: 1.5rem;
+        .report-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            border: 1px solid #e5e7eb;
         }
-        .chart-container {
-            position: relative;
-            width: 100%;
-            height: 400px; /* Fixed height for line/bar charts */
+        .report-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
         }
-        .tooltip {
-            position: absolute;
+        .report-button {
+            background-color: #0097A7;
+            color: white;
+            padding: 0.6rem 1.2rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
             text-align: center;
-            padding: 8px;
-            background: #333;
-            color: #fff;
-            border-radius: 6px;
-            pointer-events: none;
-            opacity: 0;
-            transition: opacity 0.2s;
-            font-size: 0.8rem;
-            z-index: 1000;
-        }
-        .axis path,
-        .axis line {
-            fill: none;
-            stroke: #d1d5db;
-            shape-rendering: crispEdges;
-        }
-        .axis text {
-            font-size: 0.8rem;
-            fill: #6b7280;
-        }
-        .grid line {
-            stroke: #e5e7eb;
-            stroke-dasharray: 2,2;
-        }
-        .grid path {
-            stroke-width: 0;
-        }
-        .line {
-            fill: none;
-            stroke-width: 2px;
-        }
-        .dot {
-            stroke: #fff;
-            stroke-width: 1.5px;
-        }
-        .bar {
-            fill: #6366f1; /* Default bar color */
-        }
-        .info-text {
-            font-size: 0.9rem;
-            color: #4b5563; /* Gray-700 */
-            margin-top: 1rem;
-            padding: 0.5rem 0;
-            border-top: 1px solid #e5e7eb;
-        }
-        .pie-chart-legend-item {
-            display: flex;
-            align-items: center;
-            margin-right: 1rem;
-        }
-        .pie-chart-legend-color {
-            width: 15px;
-            height: 15px;
-            border-radius: 4px;
-            margin-right: 0.5rem;
-        }
-        /* Styles for the info icon and its tooltip */
-        .info-icon-container {
-            position: relative;
+            transition: background-color 0.2s ease-in-out;
             display: inline-block;
-            margin-left: 0.5rem;
+            text-decoration: none;
         }
-        .info-icon-container .info-tooltip {
-            visibility: hidden;
-            width: 280px; /* Increased width for more text */
-            background-color: #333;
-            color: #fff;
-            text-align: left;
-            border-radius: 6px;
-            padding: 8px 12px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%; /* Position above the text */
-            left: 50%;
-            margin-left: -140px; /* Half of the new width */
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 0.75rem;
+        .report-button:hover {
+            background-color: #007f8a;
         }
-        .info-icon-container .info-tooltip::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #333 transparent transparent transparent;
-        }
-        .info-icon-container:hover .info-tooltip {
-            visibility: visible;
-            opacity: 1;
+        .badge {
+            display: inline-block;
+            padding: 0.25em 0.6em;
+            font-size: 0.75em;
+            font-weight: 700;
+            line-height: 1;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: baseline;
+            border-radius: 0.375rem;
         }
     </style>
 </head>
-<body class="p-6">
-    <img src="https://i.imgur.com/UqYbhWC.jpeg" alt="Logo de Portillo" class="mx-auto w-auto h-20 mt-4 mb-8">
-    <div class="container mx-auto p-4 md:p-8 bg-gray-100 rounded-xl shadow-lg">
-        <h1 class="text-4xl font-bold text-gray-800 mb-8 text-center">Social Media - Mayo 2025</h1>
-        <p class="text-xl text-gray-600 mb-10 text-center">Análisis de Perfiles Empresariales de Instagram (Portillo)</p>
+<body class="text-gray-800">
 
-        <!-- Key Metrics Summary -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
-            <div class="card text-center flex flex-col items-center justify-center">
-                <p class="text-gray-500 text-sm font-medium">Seguidores al final del mes</p>
-                <p id="total-followers" class="text-3xl font-bold text-indigo-700 mt-2"></p>
-            </div>
-            <div class="card text-center flex flex-col items-center justify-center">
-                <p class="text-gray-500 text-sm font-medium">Crecimiento Neto de Seguidores</p>
-                <p id="net-growth" class="text-3xl font-bold text-green-600 mt-2"></p>
-            </div>
-            <div class="card text-center flex flex-col items-center justify-center">
-                <p class="text-gray-500 text-sm font-medium">
-                    Alcance Promedio Diario
-                    <span class="info-icon-container">
-                        <i class="fas fa-info-circle text-blue-400 cursor-pointer"></i>
-                        <span class="info-tooltip">
-                            La cifra de Alcance Promedio Diario (61,750) representa el número promedio de cuentas únicas a las que se les mostró contenido asociado con el perfil de Portillo por día. Según la definición de Sprout Social, esta métrica incluye tanto la actividad orgánica como la pagada, ya que no puede ser separada.
-                        </span>
-                    </span>
-                </p>
-                <p id="avg-reach" class="text-3xl font-bold text-blue-600 mt-2"></p>
-            </div>
-            <div class="card text-center flex flex-col items-center justify-center">
-                <p class="text-gray-500 text-sm font-medium">Total de Interacciones</p>
-                <p id="total-interactions" class="text-3xl font-bold text-purple-600 mt-2"></p>
-            </div>
+    <header class="header-bg shadow-lg">
+        <div class="container mx-auto max-w-5xl p-6 text-white">
+            <h1 class="text-4xl font-bold">Portafolio de Reportes</h1>
+            <p class="mt-2 text-lg text-white/90">Análisis de Crecimiento de Canal para Punta Pacifica Realty</p>
         </div>
+    </header>
 
-        <!-- Charts Section -->
-        <div class="grid grid-cols-1 gap-8">
-            <div class="card">
-                <h2 class="text-2xl font-semibold text-gray-700 mb-4">Seguidores Obtenidos por Día</h2>
-                <div id="followers-chart" class="chart-container"></div>
+    <main class="container mx-auto max-w-5xl p-4 md:p-8">
+        
+        <section id="intro" class="mb-12">
+            <div class="bg-white p-6 rounded-lg shadow-sm border">
+                <h2 class="text-2xl font-bold text-[#0097A7] mb-3">Bienvenida al Centro de Análisis</h2>
+                <p class="text-gray-600">Este espacio centraliza los reportes mensuales de rendimiento del canal de YouTube de Punta Pacifica Realty. Cada reporte ofrece un análisis detallado de las métricas clave, los aprendizajes obtenidos y un plan de acción estratégico para el mes siguiente. El objetivo es transformar datos en decisiones informadas que impulsen el crecimiento continuo del canal.</p>
             </div>
+        </section>
 
-            <div class="card">
-                <h2 class="text-2xl font-semibold text-gray-700 mb-4">Alcance y Vistas Diarias</h2>
-                <div id="reach-impressions-chart" class="chart-container"></div>
-                <div class="info-text">
-                    <p><strong class="text-blue-600">Alcance:</strong> Representa el número de cuentas únicas que vieron tu contenido.</p>
-                    <p><strong class="text-amber-500">Vistas:</strong> Es el número total de veces que tu contenido fue visto, incluyendo múltiples vistas de la misma cuenta.</p>
-                    <p class="mt-2"><strong>Análisis del gráfico:</strong> Durante mayo de 2025, el alcance y las vistas del perfil de Portillo mostraron una tendencia general a la baja. Iniciando el mes con cifras elevadas (alrededor de 69k de Alcance y 110k de Vistas el 1 de mayo), se observa un pico notable el 5 de mayo (97k de Alcance y 132k de Vistas), sugiriendo un contenido particularmente exitoso ese día. Sin embargo, a partir de la segunda mitad del mes, ambas métricas experimentaron una disminución progresiva, culminando en los valores más bajos hacia el 31 de mayo (35k de Alcance y 46k de Vistas). Esto indica que la visibilidad y la interacción general con el contenido disminuyeron hacia finales de mes.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2 class="text-2xl font-semibold text-gray-700 mb-4">Interacciones Diarias (Likes, Comentarios, Guardados, Compartidos)</h2>
-                <div id="interactions-chart" class="chart-container"></div>
-                <div class="info-text">
-                    <p><strong>Análisis del gráfico:</strong> El gráfico de interacciones diarias revela una actividad variable a lo largo de mayo. Se observa un pico muy significativo en los "Me gusta orgánicos" el 15 de mayo, alcanzando las 40 interacciones, lo cual contrasta con el promedio diario. Otro día destacado en "Me gusta" fue el 28 de mayo con 8, aunque no tan alto como el 15. Los "Compartidos orgánicos" también tuvieron un repunte el 28 de mayo con 29, y el 15 de mayo con 3. Los "Comentarios orgánicos" y "Elementos guardados orgánicos" se mantuvieron en niveles generalmente bajos pero constantes, con pequeños picos dispersos a lo largo del mes. En general, la interacción más dominante fue a través de los "Me gusta", con eventos puntuales de "Compartidos" que elevaron la actividad, mientras que comentarios y guardados fueron menos frecuentes.</p>
-                </div>
-            </div>
-
-            <div class="card">
-                <h2 class="text-2xl font-semibold text-gray-700 mb-4">Días con Mayor Éxito en Publicaciones (Mayo 2025)</h2>
-                <div id="successful-posts-info" class="text-gray-700 text-base">
-                    <!-- This content will be generated by JavaScript -->
-                </div>
-            </div>
-
-            <!-- New Engagement Analysis Section -->
-            <div class="card">
-                <h2 class="text-2xl font-semibold text-gray-700 mb-4">Análisis de Tasa de Participación</h2>
-                <div class="info-text">
-                    <p><strong>Tasa de participación (por vista) del perfil:</strong> <span id="profile-engagement-rate" class="font-bold"></span></p>
-                    <p><strong>Percentil 50 de la red:</strong> <span id="network-50th-percentile" class="font-bold"></span></p>
-                    <p><strong>Clasificación del rendimiento:</strong> <span id="performance-percentile" class="font-bold"></span></p>
-                    <p class="mt-4"><strong>Análisis:</strong> La tasa de participación de Portillo (0.01%) es significativamente baja en comparación con el percentil 50 de la red (1.57%). Esto indica que, a pesar de un alto alcance promedio diario (que incluye tanto actividad orgánica como pagada), la audiencia no está interactuando activamente con el contenido en la misma proporción que otros perfiles de la red. Una alta visibilidad con baja interacción sugiere que el contenido, aunque visto, no está resonando lo suficiente como para generar "Me gusta", comentarios, compartidos o guardados. Es un área clave para investigar y optimizar, quizás ajustando el tipo de contenido, las llamadas a acción, o la relevancia para la audiencia alcanzada.</p>
-                </div>
-            </div>
-            <!-- End New Engagement Analysis Section -->
-
-            <!-- New Demographics Section -->
-            <div class="card">
-                <h2 class="text-2xl font-semibold text-gray-700 mb-4">Demografía de la Audiencia</h2>
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h3 class="text-lg font-semibold text-gray-700 mb-2">Audiencia por Edad</h3>
-                        <ul id="audience-age-list" class="list-disc list-inside text-gray-600"></ul>
+        <section id="reports">
+            <h2 class="text-3xl font-bold text-gray-700 mb-6">Reportes Mensuales</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- Reporte Junio 2025 -->
+                <div class="report-card flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <p class="text-sm text-gray-500">Publicado: 04 de Julio, 2025</p>
+                        <h3 class="text-xl font-bold text-gray-800 mt-2">Reporte de Junio 2025</h3>
+                        <div class="mt-3 space-x-2">
+                            <span class="badge bg-teal-100 text-teal-800">Análisis de Formatos</span>
+                            <span class="badge bg-blue-100 text-blue-800">SEO</span>
+                        </div>
+                        <p class="text-gray-600 mt-4 text-sm">Análisis profundo del impacto de la subtitulación en el algoritmo, el rendimiento de los videos "evergreen" y la identificación de formatos de contenido con mayor potencial de crecimiento.</p>
                     </div>
-                    <div class="p-4 bg-gray-50 rounded-lg flex flex-col justify-center items-center">
-                        <h3 class="text-lg font-semibold text-gray-700 mb-2">Audiencia por Género</h3>
-                        <div id="audience-gender-chart" style="width: 100%; height:300px;"></div>
-                        <div id="audience-gender-legend" class="flex flex-wrap justify-center mt-4"></div>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h3 class="text-lg font-semibold text-gray-700 mb-2">Audiencia por Principales Países</h3>
-                        <ul id="audience-countries-list" class="list-disc list-inside text-gray-600"></ul>
-                    </div>
-                    <div class="p-4 bg-gray-50 rounded-lg">
-                        <h3 class="text-lg font-semibold text-gray-700 mb-2">Audiencia por Principales Ciudades</h3>
-                        <ul id="audience-cities-list" class="list-disc list-inside text-gray-600"></ul>
+                    <div class="bg-gray-50 p-4 rounded-b-lg">
+                        <a href="reporte-junio-2025.html" class="report-button w-full">Ver Reporte Completo</a>
                     </div>
                 </div>
+
+                <!-- Reporte Mayo 2025 (Ejemplo) -->
+                <div class="report-card flex flex-col">
+                    <div class="p-6 flex-grow">
+                        <p class="text-sm text-gray-500">Publicado: 01 de Junio, 2025</p>
+                        <h3 class="text-xl font-bold text-gray-800 mt-2">Reporte de Mayo 2025</h3>
+                         <div class="mt-3 space-x-2">
+                            <span class="badge bg-green-100 text-green-800">Crecimiento</span>
+                            <span class="badge bg-purple-100 text-purple-800">CTR</span>
+                        </div>
+                        <p class="text-gray-600 mt-4 text-sm">Análisis del crecimiento en suscriptores y el desempeño del CTR promedio del canal. Se identificaron las principales fuentes de tráfico orgánico y se estableció un plan de acción para optimizar las miniaturas.</p>
+                    </div>
+                     <div class="bg-gray-50 p-4 rounded-b-lg">
+                        <a href="#" class="report-button w-full bg-gray-400 cursor-not-allowed" aria-disabled="true">Próximamente</a>
+                    </div>
+                </div>
+
+                <!-- Placeholder para Futuro Reporte -->
+                <div class="report-card border-dashed border-2 flex flex-col items-center justify-center text-center p-6">
+                     <svg class="w-12 h-12 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 13h6m-3-3v6m-9 1V7a2 2 0 012-2h10l4 4v10a2 2 0 01-2 2H4a2 2 0 01-2-2z"></path></svg>
+                    <h3 class="text-lg font-semibold text-gray-600 mt-4">Reporte de Julio 2025</h3>
+                    <p class="text-gray-500 text-sm mt-1">Disponible en Agosto</p>
+                </div>
+
             </div>
-            <!-- End New Demographics Section -->
+        </section>
 
-        </div>
-    </div>
+    </main>
 
-    <footer class="text-center text-gray-500 text-sm mt-10 pb-4">
-        <p>Elaborado por Pablo Ahumada</p>
-        <p><a href="mailto:pablo.ahumada@americar.com" class="text-blue-600 hover:underline">pablo.ahumada@americar.com</a></p>
+    <footer class="text-center p-6 mt-12 border-t">
+        <p class="text-gray-500 text-sm">Pablo Ahumada - Creado para el equipo de Punta Pacifica Realty</p>
     </footer>
 
-    <script>
-        const csvData = `"Fecha","Perfil de Instagram","Seguidores","Crecimiento neto de seguidores","Seguidores obtenidos","Seguidores perdidos","Siguiendo","Crecimiento neto de usuarios seguidos","Publicaciones realizadas","Vistas","Alcance","Engagement orgánico","Me gusta orgánicos","Comentarios orgánicos","Compartidos orgánicos","Elementos guardados orgánicos","Respuestas a la historia","Tasa de participación (por vista)"
-"05-01-2025","portillochile","27,758","15","16","1","831","0","0","110,700","69,814","4","1","3","0","0","0","0%"
-"05-02-2025","portillochile","27,770","12","21","9","831","0","0","95,774","68,743","5","4","0","0","1","0","0.01%"
-"05-03-2025","portillochile","27,778","8","18","10","831","0","0","92,363","69,025","3","2","0","0","1","0","0%"
-"05-04-2025","portillochile","27,788","10","22","12","831","0","0","91,974","67,723","7","5","0","0","2","0","0.01%"
-"05-05-2025","portillochile","27,796","8","18","10","831","0","0","132,582","97,364","2","2","0","0","0","0","0%"
-"05-06-2025","portillochile","27,811","15","23","8","831","0","0","124,644","83,833","3","3","0","0","0","0","0%"
-"05-07-2025","portillochile","27,829","18","29","11","831","0","0","116,938","79,175","6","3","0","1","2","0","0.01%"
-"05-08-2025","portillochile","27,845","16","23","7","830","-1","0","92,635","64,878","5","3","0","2","0","0","0.01%"
-"05-09-2025","portillochile","27,858","13","22","9","831","1","1","73,653","52,037","1","0","0","1","0","0","0%"
-"05-09-2025","portillochile","27,858","13","22","9","831","1","1","73,653","52,037","1","0","0","1","0","0","0%"
-"05-10-2025","portillochile","27,869","11","22","11","810","-21","0","63,590","44,585","7","6","1","0","0","0","0.01%"
-"05-11-2025","portillochile","27,885","16","25","9","810","0","9","82,947","56,897","6","3","0","1","1","1","0.01%"
-"05-12-2025","portillochile","27,901","16","26","10","810","0","0","105,191","63,277","2","1","0","0","1","0","0%"
-"05-13-2025","portillochile","27,902","1","17","16","778","-32","4","88,843","53,701","13","11","1","1","0","0","0.01%"
-"05-14-2025","portillochile","27,927","25","29","4","778","0","13","77,073","51,781","10","7","2","0","1","0","0.01%"
-"05-15-2025","portillochile","27,952","25","45","20","779","1","2","82,728","56,238","45","40","0","3","2","0","0.05%"
-"05-16-2025","portillochile","27,971","19","28","9","779","0","18","88,811","63,995","21","14","1","5","1","0","0.02%"
-"05-17-2025","portillochile","27,992","21","33","12","779","0","2","83,455","62,129","10","8","0","1","1","0","0.01%"
-"05-18-2025","portillochile","28,029","37","41","4","779","0","0","83,363","63,497","2","1","1","0","0","0","0%"
-"05-19-2025","portillochile","28,051","22","25","3","778","-1","2","102,662","72,203","9","5","2","0","2","0","0.01%"
-"05-20-2025","portillochile","28,064","13","27","14","778","0","4","99,264","69,615","9","6","1","0","2","0","0.01%"
-"05-21-2025","portillochile","28,090","26","32","6","778","0","2","96,216","68,297","8","5","1","2","0","0","0.01%"
-"05-22-2025","portillochile","28,099","9","21","12","778","0","2","88,484","65,484","6","6","0","0","0","0","0.01%"
-"05-23-2025","portillochile","28,115","16","23","7","779","1","4","76,120","55,089","6","5","1","0","0","0","0.01%"
-"05-24-2025","portillochile","28,125","10","28","18","780","1","0","81,015","60,156","5","2","1","0","2","0","0.01%"
-"05-25-2025","portillochile","28,136","11","19","8","779","-1","0","75,203","54,384","9","5","2","1","1","0","0.01%"
-"05-26-2025","portillochile","28,144","8","16","8","779","0","2","81,733","59,426","6","2","0","3","1","0","0.01%"
-"05-27-2025","portillochile","28,161","17","28","11","779","0","4","79,376","55,291","6","4","1","0","1","0","0.01%"
-"05-28-2025","portillochile","28,165","4","8","4","779","0","3","72,761","53,187","38","8","0","29","1","0","0.05%"
-"05-29-2025","portillochile","28,189","24","36","12","779","0","0","68,767","49,617","4","3","0","1","0","0","0.01%"
-"05-30-2025","portillochile","28,210","21","31","10","779","0","4","62,565","47,496","6","1","0","4","1","0","0.01%"
-"05-31-2025","portillochile","28,225","15","15","0","779","0","0","46,292","35,446","14","13","0","0","1","0","0.03%"
-`;
-
-        // Function to parse CSV data
-        function parseCSV(csv) {
-            return d3.csvParse(csv, d => {
-                // Parse date (e.g., "05-01-2025" to Date object)
-                const [month, day, year] = String(d.Fecha || '').split('-').map(Number);
-                d.Fecha = new Date(year, month - 1, day); // Month is 0-indexed in JS Date
-
-                // Clean and parse numeric values, handling commas
-                d.Seguidores = parseInt(String(d.Seguidores || '').replace(/,/g, '')) || 0;
-                d['Crecimiento neto de seguidores'] = parseInt(String(d['Crecimiento neto de seguidores'] || '').replace(/,/g, '')) || 0;
-                d['Seguidores obtenidos'] = parseInt(String(d['Seguidores obtenidos'] || '').replace(/,/g, '')) || 0;
-                d['Seguidores perdidos'] = parseInt(String(d['Seguidores perdidos'] || '').replace(/,/g, '')) || 0;
-                d.Alcance = parseInt(String(d.Alcance || '').replace(/,/g, '')) || 0;
-                d.Vistas = parseInt(String(d.Vistas || '').replace(/,/g, '')) || 0;
-                d['Engagement orgánico'] = parseInt(String(d['Engagement orgánico'] || '').replace(/,/g, '')) || 0;
-                d['Me gusta orgánicos'] = parseInt(String(d['Me gusta orgánicos'] || '').replace(/,/g, '')) || 0;
-                d['Comentarios orgánicos'] = parseInt(String(d['Comentarios orgánicos'] || '').replace(/,/g, '')) || 0;
-                d['Compartidos orgánicos'] = parseInt(String(d['Compartidos orgánicos'] || '').replace(/,/g, '')) || 0;
-                d['Elementos guardados orgánicos'] = parseInt(String(d['Elementos guardados orgánicos'] || '').replace(/,/g, '')) || 0;
-                d['Publicaciones realizadas'] = parseInt(String(d['Publicaciones realizadas'] || '').replace(/,/g, '')) || 0;
-                d['Interacciones totales'] = d['Me gusta orgánicos'] + d['Comentarios orgánicos'] + d['Compartidos orgánicos'] + d['Elementos guardados orgánicos'];
-
-                // Tasa de participación is a percentage string, parse to float
-                d['Tasa de participación (por vista)'] = parseFloat(String(d['Tasa de participación (por vista)'] || '0%').replace('%', '')) / 100 || 0;
-                return d;
-            });
-        }
-
-        // Parse the data
-        const data = parseCSV(csvData);
-
-        // Sort data by date to ensure correct chart rendering
-        data.sort((a, b) => a.Fecha - b.Fecha);
-
-        // Calculate summary metrics
-        const firstDayFollowers = data.length > 0 ? data[0].Seguidores : 0;
-        const lastDayFollowers = data.length > 0 ? data[data.length - 1].Seguidores : 0;
-        const netFollowerGrowth = lastDayFollowers - firstDayFollowers;
-
-        const totalReach = d3.sum(data, d => d.Alcance);
-        // Using the average reach from the PDF: 61.75K -> 61750
-        const avgDailyReach = 61750;
-
-        const totalInteractions = d3.sum(data, d => d['Interacciones totales']);
-
-        // Data from PDF for engagement rate comparison
-        const profileEngagementRate = "0.01%"; // From PDF
-        const network50thPercentile = "1.57%"; // From PDF
-        const performancePercentile = "Percentil 12"; // From PDF
-
-        document.getElementById('total-followers').innerText = lastDayFollowers.toLocaleString();
-        document.getElementById('net-growth').innerText = netFollowerGrowth > 0 ? `+${netFollowerGrowth.toLocaleString()}` : netFollowerGrowth.toLocaleString();
-        document.getElementById('avg-reach').innerText = Math.round(avgDailyReach).toLocaleString();
-        document.getElementById('total-interactions').innerText = totalInteractions.toLocaleString();
-
-        // Update engagement analysis section
-        document.getElementById('profile-engagement-rate').innerText = profileEngagementRate;
-        document.getElementById('network-50th-percentile').innerText = network50thPercentile;
-        document.getElementById('performance-percentile').innerText = performancePercentile;
-
-
-        // Function to create a line chart (kept for other charts)
-        function createLineChart(selector, data, yAccessors, colors, yLabel, showPoints = true) {
-            const container = d3.select(selector);
-            const margin = { top: 30, right: 60, bottom: 60, left: 80 };
-            const width = container.node().clientWidth - margin.left - margin.right;
-            const height = container.node().clientHeight - margin.top - margin.bottom;
-
-            // Clear previous chart if any
-            container.html('');
-
-            const svg = container.append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                .attr("transform", `translate(${margin.left},${margin.top})`);
-
-            // Tooltip
-            const tooltip = d3.select("body").append("div")
-                .attr("class", "tooltip");
-
-            const x = d3.scaleTime()
-                .domain(d3.extent(data, d => d.Fecha))
-                .range([0, width]);
-
-            // Calculate max Y value across all specified accessors
-            let maxY = 0;
-            yAccessors.forEach(accessor => {
-                const currentMax = d3.max(data, d => accessor.accessor(d));
-                if (currentMax > maxY) {
-                    maxY = currentMax;
-                }
-            });
-
-            const y = d3.scaleLinear()
-                .domain([0, maxY * 1.1]) // Add some padding to the top
-                .range([height, 0]);
-
-            // Add X axis
-            svg.append("g")
-                .attr("transform", `translate(0,${height})`)
-                .call(d3.axisBottom(x).ticks(d3.timeDay.every(3)).tickFormat(d3.timeFormat("%b %d")))
-                .attr("class", "axis");
-
-            // Add Y axis
-            svg.append("g")
-                .call(d3.axisLeft(y).tickFormat(d3.format(".2s")))
-                .attr("class", "axis");
-
-            // Add Y axis label
-            svg.append("text")
-                .attr("transform", "rotate(-90)")
-                .attr("y", -margin.left + 20)
-                .attr("x", -height / 2)
-                .attr("dy", "1em")
-                .style("text-anchor", "middle")
-                .style("fill", "#6b7280")
-                .style("font-size", "0.9rem")
-                .text(yLabel);
-
-            // Add X grid lines
-            svg.append("g")
-                .attr("class", "grid")
-                .attr("transform", `translate(0,${height})`)
-                .call(d3.axisBottom(x).ticks(d3.timeDay).tickSize(-height).tickFormat(""));
-
-            // Add Y grid lines
-            svg.append("g")
-                .attr("class", "grid")
-                .call(d3.axisLeft(y).tickSize(-width).tickFormat(""));
-
-            yAccessors.forEach((accessorObj, i) => {
-                const line = d3.line()
-                    .x(d => x(d.Fecha))
-                    .y(d => y(accessorObj.accessor(d)));
-
-                svg.append("path")
-                    .datum(data)
-                    .attr("fill", "none")
-                    .attr("stroke", accessorObj.color || colors[i % colors.length])
-                    .attr("stroke-width", 2)
-                    .attr("class", "line")
-                    .attr("d", line);
-
-                if (showPoints) {
-                    svg.selectAll(`.dot-${accessorObj.label.replace(/\s/g, '-')}`)
-                        .data(data)
-                        .enter()
-                        .append("circle")
-                        .attr("class", `dot dot-${accessorObj.label.replace(/\s/g, '-')}`)
-                        .attr("cx", d => x(d.Fecha))
-                        .attr("cy", d => y(accessorObj.accessor(d)))
-                        .attr("r", 6) /* Increased dot size */
-                        .attr("fill", accessorObj.color || colors[i % colors.length]) /* D3 will now control fill */
-                        .on("mouseover", function(event, d) {
-                            tooltip.style("opacity", 1)
-                                .html(`<strong>${accessorObj.label}:</strong> ${accessorObj.accessor(d).toLocaleString()}<br><strong>Fecha:</strong> ${d3.timeFormat("%b %d")(d.Fecha)}`)
-                                .style("left", (event.pageX + 10) + "px")
-                                .style("top", (event.pageY - 28) + "px");
-                        })
-                        .on("mouseout", function() {
-                            tooltip.style("opacity", 0);
-                        });
-                }
-            });
-
-            // Add legend if multiple lines (This legend is for line charts only)
-            if (yAccessors.length > 1) {
-                const legend = svg.append("g")
-                    .attr("font-family", "sans-serif")
-                    .attr("font-size", 10)
-                    .attr("text-anchor", "end")
-                    .selectAll("g")
-                    .data(yAccessors)
-                    .enter().append("g")
-                    .attr("transform", (d, i) => `translate(0,${i * 20})`);
-
-                legend.append("rect")
-                    .attr("x", width - 19)
-                    .attr("width", 19)
-                    .attr("height", 19)
-                    .attr("fill", d => d.color);
-
-                legend.append("text")
-                    .attr("x", width - 24)
-                    .attr("y", 9.5)
-                    .attr("dy", "0.32em")
-                    .text(d => d.label);
-            }
-        }
-
-        // New function to create a bar chart
-        function createBarChart(selector, data, xAccessor, yAccessor, color, yLabel) {
-            const container = d3.select(selector);
-            const margin = { top: 30, right: 60, bottom: 60, left: 80 };
-            const width = container.node().clientWidth - margin.left - margin.right;
-            const height = container.node().clientHeight - margin.top - margin.bottom;
-
-            // Clear previous chart if any
-            container.html('');
-
-            const svg = container.append("svg")
-                .attr("width", width + margin.left + margin.right)
-                .attr("height", height + margin.top + margin.bottom)
-                .append("g")
-                .attr("transform", `translate(${margin.left},${margin.top})`);
-
-            // Tooltip
-            const tooltip = d3.select("body").append("div")
-                .attr("class", "tooltip");
-
-            // X scale for dates (band scale for bars)
-            const x = d3.scaleBand()
-                .domain(data.map(function(d) { return d.Fecha; }))
-                .range([0, width])
-                .padding(0.1);
-
-            // Y scale for values
-            const y = d3.scaleLinear()
-                .domain([0, d3.max(data, yAccessor) * 1.1])
-                .range([height, 0]);
-
-            // Add X axis
-            svg.append("g")
-                .attr("transform", `translate(0,${height})`)
-                .call(d3.axisBottom(x).ticks(d3.timeDay.every(3)).tickFormat(d3.timeFormat("%b %d"))) // Format dates for display
-                .attr("class", "axis")
-                .selectAll("text")
-                .attr("transform", "rotate(-45)")
-                .style("text-anchor", "end");
-
-            // Add Y axis
-            svg.append("g")
-                .call(d3.axisLeft(y).tickFormat(d3.format(".2s")))
-                .attr("class", "axis");
-
-            // Add Y axis label
-            svg.append("text")
-                .attr("transform", "rotate(-90)")
-                .attr("y", -margin.left + 20)
-                .attr("x", -height / 2)
-                .attr("dy", "1em")
-                .style("text-anchor", "middle")
-                .style("fill", "#6b7280")
-                .style("font-size", "0.9rem")
-                .text(yLabel);
-
-            // Add X grid lines
-            svg.append("g")
-                .attr("class", "grid")
-                .attr("transform", `translate(0,${height})`)
-                .call(d3.axisBottom(x).tickSize(-height).tickFormat(""));
-
-            // Add Y grid lines
-            svg.append("g")
-                .attr("class", "grid")
-                .call(d3.axisLeft(y).tickSize(-width).tickFormat(""));
-
-            // Draw bars
-            svg.selectAll(".bar")
-                .data(data)
-                .enter()
-                .append("rect")
-                .attr("class", "bar")
-                .attr("x", function(d) { return x(d.Fecha); })
-                .attr("y", function(d) { return y(yAccessor(d)); })
-                .attr("width", x.bandwidth())
-                .attr("height", function(d) { return height - y(yAccessor(d)); })
-                .attr("fill", color)
-                .on("mouseover", function(event, d) {
-                    tooltip.style("opacity", 1)
-                        .html(`<strong>Fecha:</strong> ${d3.timeFormat("%b %d")(d.Fecha)}<br><strong>Seguidores Obtenidos:</strong> ${yAccessor(d).toLocaleString()}`)
-                        .style("left", (event.pageX + 10) + "px")
-                        .style("top", (event.pageY - 28) + "px");
-                })
-                .on("mouseout", function() {
-                    tooltip.style("opacity", 0);
-                });
-        }
-
-        // Function to create a pie chart
-        function createPieChart(selector, data, titleAccessor, valueAccessor, colorAccessor) {
-            const container = d3.select(selector);
-            const containerNode = container.node();
-            if (!containerNode) {
-                console.error(`Container for selector '${selector}' not found.`);
-                return;
-            }
-
-            const width = containerNode.clientWidth;
-            const height = 300;
-            const radius = Math.min(width, height) / 2 - 20;
-
-            container.html(''); // Clear previous chart
-
-            const svg = container.append("svg")
-                .attr("width", width)
-                .attr("height", height)
-                .append("g")
-                .attr("transform", `translate(${width / 2},${height / 2})`);
-
-            const pie = d3.pie()
-                .value(valueAccessor)
-                .sort(null);
-
-            const arc = d3.arc()
-                .innerRadius(radius * 0.6)
-                .outerRadius(radius);
-
-            const tooltip = d3.select("body").append("div")
-                .attr("class", "tooltip");
-
-            const arcs = svg.selectAll(".arc")
-                .data(pie(data))
-                .enter()
-                .append("g")
-                .attr("class", "arc");
-
-            arcs.append("path")
-                .attr("d", arc)
-                .attr("fill", function(d) { return colorAccessor(d.data); })
-                .attr("stroke", "#fff")
-                .attr("stroke-width", "2px")
-                .on("mouseover", function(event, d) {
-                    tooltip.style("opacity", 1)
-                        .html(`<strong>${titleAccessor(d.data)}:</strong> ${valueAccessor(d.data)}% (${d.data.count.toLocaleString()})`)
-                        .style("left", (event.pageX + 10) + "px")
-                        .style("top", (event.pageY - 28) + "px");
-                })
-                .on("mouseout", function() {
-                    tooltip.style("opacity", 0);
-                });
-
-            // No labels or legend on the SVG for this chart
-            // The legend will be rendered separately in HTML below the chart
-        }
-
-
-        // Chart 1: Seguidores Obtenidos por Día (Ahora un gráfico de barras)
-        createBarChart(
-            '#followers-chart',
-            data,
-            function(d) { return d.Fecha; }, // X accessor for dates
-            function(d) { return d['Seguidores obtenidos']; }, // Y accessor for followers obtained
-            '#6366f1', // Color for bars
-            'Seguidores Obtenidos' // Y-axis label
-        );
-
-        // Chart 2: Alcance y Vistas Diarias
-        createLineChart(
-            '#reach-impressions-chart',
-            data,
-            [
-                { label: 'Alcance', accessor: function(d) { return d.Alcance; }, color: '#2563eb' }, // Blue-600
-                { label: 'Vistas', accessor: function(d) { return d.Vistas; }, color: '#f59e0b' } // Amber-500 (Yellow)
-            ],
-            ['#2563eb', '#f59e0b'],
-            'Conteo',
-            true
-        );
-
-        // Chart 3: Interacciones Diarias (Likes, Comentarios, Guardados, Compartidos)
-        createLineChart(
-            '#interactions-chart',
-            data,
-            [
-                { label: 'Me gusta', accessor: function(d) { return d['Me gusta orgánicos']; }, color: '#ef4444' }, // Red-500
-                { label: 'Comentarios', accessor: function(d) { return d['Comentarios orgánicos']; }, color: '#22c55e' }, // Green-500
-                { label: 'Guardados', accessor: function(d) { return d['Elementos guardados orgánicos']; }, color: '#0ea5e9' }, // Sky-500
-                { label: 'Compartidos', accessor: function(d) { return d['Compartidos orgánicos']; }, color: '#a855f7' } // Purple-500
-            ],
-            ['#ef4444', '#22c55e', '#0ea5e9', '#a855f7'],
-            'Número de Interacciones',
-            true
-        );
-
-        // Function to find the most successful publications by day
-        function findMostSuccessfulPublications(data) {
-            let topEngagementDays = [];
-            let maxEngagement = 0;
-
-            let topLikesDays = [];
-            let maxLikes = 0;
-
-            let topSharesDays = [];
-            let maxShares = 0;
-
-            data.forEach(function(d) {
-                const date = d3.timeFormat("%b %d")(d.Fecha);
-                // For Engagement
-                if (d['Engagement orgánico'] > maxEngagement) {
-                    maxEngagement = d['Engagement orgánico'];
-                    topEngagementDays = [{ date: date, engagement: d['Engagement orgánico'], posts: d['Publicaciones realizadas'] }];
-                } else if (d['Engagement orgánico'] === maxEngagement && maxEngagement > 0) {
-                    topEngagementDays.push({ date: date, engagement: d['Engagement orgánico'], posts: d['Publicaciones realizadas'] });
-                }
-
-                // For Likes
-                if (d['Me gusta orgánicos'] > maxLikes) {
-                    maxLikes = d['Me gusta orgánicos'];
-                    topLikesDays = [{ date: date, likes: d['Me gusta orgánicos'], posts: d['Publicaciones realizadas'] }];
-                } else if (d['Me gusta orgánicos'] === maxLikes && maxLikes > 0) {
-                    topLikesDays.push({ date: date, likes: d['Me gusta orgánicos'], posts: d['Publicaciones realizadas'] });
-                }
-
-                // For Shares
-                if (d['Compartidos orgánicos'] > maxShares) {
-                    maxShares = d['Compartidos orgánicos'];
-                    topSharesDays = [{ date: date, shares: d['Compartidos orgánicos'], posts: d['Publicaciones realizadas'] }];
-                } else if (d['Compartidos orgánicos'] === maxShares && maxShares > 0) {
-                    topSharesDays.push({ date: date, shares: d['Compartidos orgánicos'], posts: d['Publicaciones realizadas'] });
-                }
-            });
-
-            let resultHtml = "<p class='mb-2'>Para identificar las publicaciones más exitosas, hemos analizado los días con mayor " +
-                             "engagement (interacción general), 'Me gusta' y 'Compartidos', ya que son indicadores clave del impacto del contenido. " +
-                             "Es importante destacar que estos datos corresponden a la actividad total del día, no a publicaciones individuales específicas.</p>";
-
-            if (topEngagementDays.length > 0 && maxEngagement > 0) {
-                resultHtml += "<h3 class='text-lg font-semibold text-gray-700 mt-4 mb-2'>Días con mayor Engagement Orgánico:</h3><ul>";
-                topEngagementDays.forEach(function(day) {
-                    resultHtml += `<li><strong>${day.date}:</strong> ${day.engagement} de Engagement (${day.posts} publicaciones).</li>`;
-                });
-                resultHtml += "</ul>";
-            } else {
-                resultHtml += "<p class='mt-2'>No se registraron interacciones de Engagement orgánico significativas durante este período.</p>";
-            }
-
-            if (topLikesDays.length > 0 && maxLikes > 0) {
-                resultHtml += "<h3 class='text-lg font-semibold text-gray-700 mt-4 mb-2'>Días con mayor número de 'Me gusta' orgánicos:</h3><ul>";
-                topLikesDays.forEach(function(day) {
-                    resultHtml += `<li><strong>${day.date}:</strong> ${day.likes} 'Me gusta' (${day.posts} publicaciones).</li>`;
-                });
-                resultHtml += "</ul>";
-            } else {
-                resultHtml += "<p class='mt-2'>No se registraron 'Me gusta' orgánicos significativos durante este período.</p>";
-            }
-
-            if (topSharesDays.length > 0 && maxShares > 0) {
-                resultHtml += "<h3 class='text-lg font-semibold text-gray-700 mt-4 mb-2'>Días con mayor número de 'Compartidos' orgánicos:</h3><ul>";
-                topSharesDays.forEach(function(day) {
-                    resultHtml += `<li><strong>${day.date}:</strong> ${day.shares} 'Compartidos' (${day.posts} publicaciones).</li>`;
-                });
-                resultHtml += "</ul>";
-            } else {
-                resultHtml += "<p class='mt-2'>No se registraron 'Compartidos' orgánicos significativos durante este período.</p>";
-            }
-            return resultHtml;
-        }
-
-        document.getElementById('successful-posts-info').innerHTML = findMostSuccessfulPublications(data);
-
-        // Demographic Data (extracted from PDF)
-        const demographicData = {
-            age: [
-                { range: "13-17", percentage: 0.1 },
-                { range: "18-24", percentage: 3.4 },
-                { range: "25-34", percentage: 36.7 },
-                { range: "35-44", percentage: 38.7 },
-                { range: "45-54", percentage: 14.9 },
-                { range: "55-64", percentage: 4.3 },
-                { range: "65+", percentage: 1.9 }
-            ],
-            gender: [
-                { label: "Hombres", percentage: 60.4, count: 16585, color: "#2563eb" },
-                { label: "Mujeres", percentage: 30.5, count: 8380, color: "#ec4899" },
-                { label: "Género no binario o no especificado", percentage: 9.0, count: 2483, color: "#6b7280" }
-            ],
-            countries: [
-                { name: "Chile", count: 26089 },
-                { name: "Estados Unidos", count: 424 },
-                { name: "Venezuela", count: 220 },
-                { name: "Brasil", count: 166 },
-                { name: "España", count: 123 }
-            ],
-            cities: [
-                { name: "Santiago, Santiago Metropolitan Region", count: 16925 },
-                { name: "Colina, Santiago Metropolitan Region", count: 486 },
-                { name: "Temuco, Araucanía Region", count: 320 },
-                { name: "Viña del Mar, Valparaíso Region", count: 249 },
-                { name: "Rancagua, O'Higgins Region", count: 213 }
-            ]
-        };
-
-        // Render Demographics
-        function renderDemographics() {
-            // Audience by Age
-            const ageList = d3.select("#audience-age-list");
-            ageList.html(''); // Clear previous content
-            demographicData.age.forEach(function(d) {
-                ageList.append("li").text(`${d.range}: ${d.percentage}%`);
-            });
-
-            // Audience by Gender (Pie Chart)
-            createPieChart(
-                '#audience-gender-chart',
-                demographicData.gender,
-                function(d) { return d.label; },
-                function(d) { return d.percentage; },
-                function(d) { return d.color; }
-            );
-
-            // Generate HTML legend for gender chart
-            const genderLegendContainer = d3.select("#audience-gender-legend");
-            genderLegendContainer.html(''); // Clear previous legend
-            demographicData.gender.forEach(function(d) {
-                const item = genderLegendContainer.append("div")
-                    .attr("class", "pie-chart-legend-item");
-                item.append("div")
-                    .attr("class", "pie-chart-legend-color")
-                    .style("background-color", d.color);
-                item.append("span")
-                    .text(`${d.label}: ${d.percentage}%`);
-            });
-
-
-            // Audience by Countries
-            const countriesList = d3.select("#audience-countries-list");
-            countriesList.html(''); // Clear previous content
-            demographicData.countries.forEach(function(d) {
-                countriesList.append("li").text(`${d.name}: ${d.count.toLocaleString()}`);
-            });
-
-            // Audience by Cities
-            const citiesList = d3.select("#audience-cities-list");
-            citiesList.html(''); // Clear previous content
-            demographicData.cities.forEach(function(d) {
-                citiesList.append("li").text(`${d.name}: ${d.count.toLocaleString()}`);
-            });
-        }
-
-        renderDemographics(); // Initial render of demographics
-
-        // Resize observer to make charts responsive
-        new ResizeObserver(function(entries) {
-            for (let entry of entries) {
-                if (entry.target.id === 'followers-chart') {
-                    createBarChart(
-                        '#followers-chart',
-                        data,
-                        function(d) { return d.Fecha; },
-                        function(d) { return d['Seguidores obtenidos']; },
-                        '#6366f1',
-                        'Seguidores Obtenidos'
-                    );
-                } else if (entry.target.id === 'reach-impressions-chart') {
-                    createLineChart(
-                        '#reach-impressions-chart',
-                        data,
-                        [
-                            { label: 'Alcance', accessor: function(d) { return d.Alcance; }, color: '#2563eb' },
-                            { label: 'Vistas', accessor: function(d) { return d.Vistas; }, color: '#f59e0b' }
-                        ],
-                        ['#2563eb', '#f59e0b'],
-                        'Conteo',
-                        true
-                    );
-                } else if (entry.target.id === 'interactions-chart') {
-                    createLineChart(
-                        '#interactions-chart',
-                        data,
-                        [
-                            { label: 'Me gusta', accessor: function(d) { return d['Me gusta orgánicos']; }, color: '#ef4444' },
-                            { label: 'Comentarios', accessor: function(d) { return d['Comentarios orgánicos']; }, color: '#22c55e' },
-                            { label: 'Guardados', accessor: function(d) { return d['Elementos guardados orgánicos']; }, color: '#0ea5e9' },
-                            { label: 'Compartidos', accessor: function(d) { return d['Compartidos orgánicos']; }, color: '#a855f7' }
-                        ],
-                        ['#ef4444', '#22c55e', '#0ea5e9', '#a855f7'],
-                        'Número de Interacciones',
-                        true
-                    );
-                } else if (entry.target.id === 'audience-gender-chart') {
-                    createPieChart(
-                        '#audience-gender-chart',
-                        demographicData.gender,
-                        function(d) { return d.label; },
-                        function(d) { return d.percentage; },
-                        function(d) { return d.color; }
-                    );
-                }
-                // Re-render demographics to update HTML legend
-                renderDemographics();
-            }
-        }).observe(document.getElementById('followers-chart'));
-        new ResizeObserver(function(entries) {
-            for (let entry of entries) {
-                if (entry.target.id === 'reach-impressions-chart') {
-                    createLineChart(
-                        '#reach-impressions-chart',
-                        data,
-                        [
-                            { label: 'Alcance', accessor: function(d) { return d.Alcance; }, color: '#2563eb' },
-                            { label: 'Vistas', accessor: function(d) { return d.Vistas; }, color: '#f59e0b' }
-                        ],
-                        ['#2563eb', '#f59e0b'],
-                        'Conteo',
-                        true
-                    );
-                }
-            }
-        }).observe(document.getElementById('reach-impressions-chart'));
-        new ResizeObserver(function(entries) {
-            for (let entry of entries) {
-                if (entry.target.id === 'interactions-chart') {
-                    createLineChart(
-                        '#interactions-chart',
-                        data,
-                        [
-                            { label: 'Me gusta', accessor: function(d) { return d['Me gusta orgánicos']; }, color: '#ef4444' },
-                            { label: 'Comentarios', accessor: function(d) { return d['Comentarios orgánicos']; }, color: '#22c55e' },
-                            { label: 'Guardados', accessor: function(d) { return d['Elementos guardados orgánicos']; }, color: '#0ea5e9' },
-                            { label: 'Compartidos', accessor: function(d) { return d['Compartidos orgánicos']; }, color: '#a855f7' }
-                        ],
-                        ['#ef4444', '#22c55e', '#0ea5e9', '#a855f7'],
-                        'Número de Interacciones',
-                        true
-                    );
-                }
-            }
-        }).observe(document.getElementById('interactions-chart'));
-        new ResizeObserver(function(entries) {
-            for (let entry of entries) {
-                if (entry.target.id === 'audience-gender-chart') {
-                    createPieChart(
-                        '#audience-gender-chart',
-                        demographicData.gender,
-                        function(d) { return d.label; },
-                        function(d) { return d.percentage; },
-                        function(d) { return d.color; }
-                    );
-                    renderDemographics(); // Re-render demographics to update HTML legend
-                }
-            }
-        }).observe(document.getElementById('audience-gender-chart'));
-
-    </script>
 </body>
 </html>
