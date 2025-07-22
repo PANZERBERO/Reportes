@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Optimización de Videos | Julio 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- Plugin de Chart.js para mostrar etiquetas en los gráficos -->
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-datalabels@2.2.0"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .brand-text {
+            color: #0097A7;
+        }
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1e293b;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-[#0097A7] shadow-md p-6">
+        <div class="container mx-auto max-w-5xl">
+            <h1 class="text-3xl font-bold text-white">Reporte de Optimización de Videos</h1>
+            <p class="text-white/80">Julio 2025</p>
+        </div>
+    </header>
+
+    <main class="container mx-auto max-w-5xl p-4 md:p-8">
+
+        <section id="resumen" class="mb-12">
+            <h2 class="section-title">Análisis de Rendimiento</h2>
+            <p class="text-gray-600 mb-8">Este reporte evalúa el impacto de las optimizaciones realizadas en tres videos durante el mes de julio. Se analizan los cambios en el Click-Through Rate (CTR) y el Porcentaje Medio de Visualización para medir la efectividad de las acciones.</p>
+            
+            <div class="space-y-8">
+
+                <!-- Video 1 -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="md:flex md:items-center md:justify-between">
+                        <h3 class="text-xl font-bold brand-text truncate">La Ruta del Éxito Turístico en Panamá</h3>
+                        <a href="https://www.youtube.com/watch?v=hqk75eNAi7s" target="_blank" class="text-sm font-medium text-teal-600 hover:text-teal-800 transition-colors">Ver en YouTube &rarr;</a>
+                    </div>
+                    <hr class="my-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <!-- Gráficos -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-center font-semibold text-gray-600 text-sm mb-2">Click-Through Rate</h4>
+                                <div class="relative h-28 w-full">
+                                    <canvas id="ctrChart1"></canvas>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-center font-semibold text-gray-600 text-sm mb-2">Porcentaje de Visualización</h4>
+                                <div class="relative h-28 w-full">
+                                    <canvas id="retentionChart1"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Análisis -->
+                        <div class="bg-gray-50 p-4 rounded-md">
+                            <h4 class="font-semibold text-gray-700">Análisis del Resultado</h4>
+                            <p class="text-sm text-gray-600 mt-2">El aumento del CTR indica que la optimización fue efectiva para captar la atención. La disminución en el porcentaje de visualización es un comportamiento esperado, ya que este video fue patrocinado con <strong>YouTube Ads</strong>. Las campañas de anuncios suelen dirigirse a una audiencia más amplia y menos segmentada que la orgánica, la cual tiende a omitir el anuncio. Esto reduce drásticamente la métrica de retención promedio, pero no invalida la efectividad del anuncio para generar notoriedad y clics iniciales.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 2 -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="md:flex md:items-center md:justify-between">
+                        <h3 class="text-xl font-bold brand-text truncate">Santa Maria Golf & Country Club in Panama City</h3>
+                         <a href="https://www.youtube.com/watch?v=iwtTKe4KsUc" target="_blank" class="text-sm font-medium text-teal-600 hover:text-teal-800 transition-colors">Ver en YouTube &rarr;</a>
+                    </div>
+                    <hr class="my-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                        <!-- Gráficos -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-center font-semibold text-gray-600 text-sm mb-2">Click-Through Rate</h4>
+                                <div class="relative h-28 w-full">
+                                    <canvas id="ctrChart2"></canvas>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-center font-semibold text-gray-600 text-sm mb-2">Porcentaje de Visualización</h4>
+                                <div class="relative h-28 w-full">
+                                    <canvas id="retentionChart2"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Análisis -->
+                        <div class="bg-gray-50 p-4 rounded-md">
+                            <h4 class="font-semibold text-gray-700">Análisis del Resultado</h4>
+                            <p class="text-sm text-gray-600 mt-2">El resultado de la optimización es positivo. Se registró un aumento tanto en el CTR como en la retención de la audiencia. Esto indica que los cambios realizados no solo atrajeron a más espectadores, sino que estos encontraron el contenido relevante y permanecieron viéndolo por más tiempo.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Video 3 -->
+                <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                    <div class="md:flex md:items-center md:justify-between">
+                        <h3 class="text-xl font-bold brand-text truncate">Where to Invest in Panama: Airbnb Units with High ROI</h3>
+                         <a href="https://www.youtube.com/watch?v=shLiV3nORsY" target="_blank" class="text-sm font-medium text-teal-600 hover:text-teal-800 transition-colors">Ver en YouTube &rarr;</a>
+                    </div>
+                    <hr class="my-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+                         <!-- Gráficos -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <h4 class="text-center font-semibold text-gray-600 text-sm mb-2">Click-Through Rate</h4>
+                                <div class="relative h-28 w-full">
+                                    <canvas id="ctrChart3"></canvas>
+                                </div>
+                            </div>
+                            <div>
+                                <h4 class="text-center font-semibold text-gray-600 text-sm mb-2">Porcentaje de Visualización</h4>
+                                <div class="relative h-28 w-full">
+                                    <canvas id="retentionChart3"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Análisis -->
+                        <div class="bg-gray-50 p-4 rounded-md">
+                            <h4 class="font-semibold text-gray-700">Análisis del Resultado</h4>
+                            <p class="text-sm text-gray-600 mt-2">Al igual que en el caso anterior, esta optimización muestra un resultado positivo. El incremento en el CTR, junto con una mayor duración de visualización, sugiere que los ajustes fueron acertados para atraer y retener a la audiencia objetivo interesada en el tema de la jubilación en Panamá.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section id="conclusion" class="mt-12">
+            <h2 class="section-title">Conclusión y Próximos Pasos</h2>
+            <div class="bg-white p-6 rounded-lg shadow-md border border-gray-200">
+                <p class="text-gray-600 mb-4">Las optimizaciones realizadas en julio muestran una tendencia general positiva. Dos de los tres videos analizados mejoraron en las dos métricas clave (CTR y retención).</p>
+                <ul class="list-disc list-inside space-y-3 text-gray-700">
+                    <li><span class="font-semibold">Resultados Positivos:</span> Los videos "Santa Maria Golf & Country Club" y "Where to Invest in Panama" son casos de referencia. Se recomienda analizar los cambios específicos realizados en sus miniaturas y títulos para replicar estas tácticas en futuros contenidos.</li>
+                    <li><span class="font-semibold">Resultado Mixto:</span> El caso del video "La Ruta del Éxito Turístico" ilustra el impacto de la publicidad. La estrategia fue efectiva para aumentar los clics (CTR), y la baja retención es un resultado coherente con una campaña de alcance amplio.</li>
+                    <li><span class="font-semibold">Testeo Adicional:</span> Se ha iniciado una nueva fase de testeo para el video <a href="https://youtu.be/g6tx7uJCUMg" target="_blank" class="text-teal-600 hover:underline">"Panama Residency Routes: Investor & Pension Options"</a>. Este video ha mantenido un CTR bajo históricamente, por lo que se están probando nuevas variaciones de miniatura y título para mejorar su rendimiento inicial.</li>
+                    <li><span class="font-semibold">Recomendación General:</span> Continuar con el proceso de optimización y seguimiento, enfocándose en replicar las estrategias que demuestran mejorar tanto la atracción (CTR) como el engagement (porcentaje de visualización).</li>
+                </ul>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center p-6 mt-8 border-t border-gray-200">
+        <p class="text-gray-500 text-sm">&copy; 2025 Punta Pacifica Realty | Reporte generado para uso interno.</p>
+    </footer>
+
+    <script>
+        // Registrar el plugin de datalabels globalmente
+        Chart.register(ChartDataLabels);
+
+        // --- Datos de los videos ---
+        const videoData = [
+            { id: 1, ctr: [1.2, 2.3], retention: [8.3, 3.1] },
+            { id: 2, ctr: [4.2, 6.4], retention: [27.3, 34.5] },
+            { id: 3, ctr: [2.4, 3.8], retention: [15.0, 17.4] }
+        ];
+
+        // --- Función para crear gráficos ---
+        const createChart = (ctx, chartData, unit) => {
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['Antes', 'Después'],
+                    datasets: [{
+                        label: 'Rendimiento',
+                        data: chartData,
+                        backgroundColor: [
+                            '#e5e7eb', // gray-200
+                            '#0097A7'  // brand-text
+                        ],
+                        borderColor: [
+                            '#d1d5db', // gray-300
+                            '#007f8a'
+                        ],
+                        borderWidth: 1,
+                        borderRadius: 4,
+                    }]
+                },
+                options: {
+                    indexAxis: 'y',
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    layout: {
+                        padding: {
+                            right: 35 // Espacio a la derecha para que no se corten las etiquetas
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false,
+                            beginAtZero: true,
+                        },
+                        y: {
+                            display: false,
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false
+                        },
+                        tooltip: {
+                            enabled: false
+                        },
+                        datalabels: {
+                            anchor: 'end',
+                            align: 'end',
+                            formatter: (value) => value.toFixed(1) + unit,
+                            color: '#4b5563', // gray-600
+                            font: {
+                                weight: 'bold',
+                                size: 14,
+                            }
+                        }
+                    }
+                }
+            });
+        };
+
+        // --- Crear todos los gráficos ---
+        videoData.forEach(video => {
+            // Gráfico de CTR
+            const ctrCtx = document.getElementById(`ctrChart${video.id}`).getContext('2d');
+            createChart(ctrCtx, video.ctr, '%');
+
+            // Gráfico de Retención
+            const retentionCtx = document.getElementById(`retentionChart${video.id}`).getContext('2d');
+            createChart(retentionCtx, video.retention, '%');
+        });
+    </script>
+
+</body>
+</html>
