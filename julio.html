@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reporte de Crecimiento | Punta Pacifica Realty | Julio 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f8fafc;
+        }
+        .metric-card {
+            background-color: white;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: flex;
+            flex-direction: column;
+        }
+        .metric-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .brand-text {
+            color: #0097A7; /* Color de marca para títulos de secciones */
+        }
+        .section-title {
+            font-size: 1.875rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #0097A7; /* Color de marca para títulos de secciones */
+        }
+        .action-button {
+            background-color: #0097A7;  
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            text-align: center;
+            transition: background-color 0.2s ease-in-out;
+            display: inline-block;
+            text-decoration: none;
+        }
+        .action-button:hover {
+            background-color: #007f8a;  
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-weight: 500;
+            font-size: 0.875rem;
+        }
+        .status-en-proceso {
+            background-color: #fef9c3; /* yellow-100 */
+            color: #ca8a04; /* yellow-600 */
+        }
+        .status-cumplido {
+             background-color: #dcfce7; /* green-100 */
+            color: #16a34a; /* green-600 */
+        }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.6);
+            z-index: 1000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 1rem;
+        }
+        .modal-content {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 0.75rem;
+            max-width: 90%;
+            width: 700px;
+            position: relative;
+            max-height: 90vh; 
+            overflow-y: auto; 
+        }
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #6b7280;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <header class="bg-[#0097A7] shadow-md p-6">
+        <div class="container mx-auto max-w-6xl flex justify-between items-center">
+            <div>
+                <h1 class="text-2xl font-bold text-white">Punta Pacifica Realty - A Spotlight to Panama</h1>
+                <div class="flex items-center gap-2 text-white/80">
+                    <svg class="w-6 h-6" viewBox="0 0 28 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M27.4272 3.12317C27.1018 1.89317 26.1344 0.924916 24.9072 0.600666C22.7272 0 14 0 14 0C14 0 5.27273 0 3.09273 0.600666C1.86545 0.924916 0.898182 1.89317 0.572727 3.12317C0 5.35317 0 10 0 10C0 10 0 14.6468 0.572727 16.8768C0.898182 18.1068 1.86545 19.0751 3.09273 19.3993C5.27273 20 14 20 14 20C14 20 22.7272 20 24.9072 19.3993C26.1344 19.0751 27.1018 18.1068 27.4272 16.8768C28 14.6468 28 10 28 10C28 10 28 5.35317 27.4272 3.12317ZM11.2 14.2857V5.71429L18.48 10L11.2 14.2857Z"/></svg>
+                    <p>Reporte de Crecimiento de YouTube</p>
+                </div>
+            </div>
+            <div class="text-right">
+                <h2 class="text-xl font-semibold text-white">Julio 2025</h2>
+                <p class="text-sm text-white/80">Versión Interactiva</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="container mx-auto max-w-6xl p-4 md:p-8">
+
+        <section id="resumen" class="mb-12">
+            <h2 class="section-title">Resumen Ejecutivo</h2>
+            <div class="bg-teal-50 border-l-4 border-teal-500 text-teal-800 p-4 mb-8 rounded-r-lg">
+                <p class="font-bold">Crecimiento de Comunidad y Sinergia Web</p>
+                <p class="text-sm">Julio se destaca por un notable aumento en suscriptores (+140%) y por el excelente rendimiento del contenido evergreen y las encuestas en la pestaña de Comunidad. El análisis del video principal revela una anomalía en el tráfico de Ads que requiere atención, pero la estrategia de sinergia entre plataformas se consolida como un pilar fundamental del canal.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="metric-card p-6">
+                    <h3 class="font-semibold text-gray-500">Vistas Orgánicas</h3>
+                    <p class="text-4xl font-bold my-2">8,984</p>
+                    <div class="flex items-center text-red-500">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 17h8m0 0V9m0 8l-8-8-4 4-6-6" /></svg>
+                        <span>-12.6% vs. Junio</span>
+                    </div>
+                     <p class="text-xs text-gray-400 mt-auto pt-2">Total (incl. Ads): 83,752</p>
+                </div>
+                <div class="metric-card p-6">
+                    <h3 class="font-semibold text-gray-500">Nuevos Suscriptores</h3>
+                    <p class="text-4xl font-bold my-2">226</p>
+                    <div class="flex items-center text-green-500">
+                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-8.707l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13a1 1 0 102 0V9.414l1.293 1.293a1 1 0 001.414-1.414z" clip-rule="evenodd" /></svg>
+                        <span>+140% vs. Junio</span>
+                    </div>
+                </div>
+                <a href="https://youtu.be/hqk75eNAi7s" target="_blank" class="metric-card p-6 block">
+                    <h3 class="font-semibold text-gray-500 mb-3">Video del Mes</h3>
+                    <div class="space-y-3 text-xs flex-grow">
+                        <div class="p-2 rounded-md bg-gray-50">
+                           <p class="font-semibold truncate">La Ruta del Éxito Turístico...</p>
+                           <p><b>295</b> Vistas Org. | <b>2.0%</b> CTR</p>
+                        </div>
+                    </div>
+                </a>
+                 <div class="metric-card p-6">
+                    <h3 class="font-semibold text-gray-500">CTR Promedio del Canal</h3>
+                    <p class="text-4xl font-bold my-2">5.1%</p>
+                    <div class="flex items-center text-yellow-600">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14" /></svg>
+                        <span>Estable vs. Junio</span>
+                    </div>
+                </div>
+            </div>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                <div class="metric-card p-6">
+                    <h3 class="font-semibold text-lg mb-4">Vistas Orgánicas - Desempeño Anual</h3>
+                    <div class="relative h-72">
+                        <canvas id="vistasChart"></canvas>
+                    </div>
+                </div>
+                <div class="metric-card p-6">
+                    <h3 class="font-semibold text-lg mb-4">Suscriptores - Desempeño Anual</h3>
+                    <div class="relative h-72">
+                        <canvas id="suscriptoresChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="evergreen-performance" class="mb-12">
+            <h2 class="section-title">El Motor Silencioso: El Poder del Tráfico Web</h2>
+            <div class="metric-card p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="md:col-span-2">
+                        <a href="https://www.youtube.com/watch?v=KtnTo2VGA4c" target="_blank">
+                            <h3 class="font-bold text-lg mb-4 brand-text hover:underline">Caso de Éxito: "Playa Caracol"</h3>
+                        </a>
+                        <p class="text-sm text-gray-600 mb-4">El video sobre Playa Caracol se ha consolidado como el activo evergreen más valioso del canal este mes. Con <strong>442 vistas orgánicas</strong>, demuestra que el contenido de propiedades específicas tiene un gran potencial a largo plazo.</p>
+                        <h3 class="font-bold text-lg mb-4 brand-text">Análisis Estratégico: Una Sinergia Perfecta</h3>
+                        <p class="text-sm text-gray-600">Lo más destacable es la fuente de su éxito: el <strong>59.6% de sus vistas provienen de tráfico externo</strong>, principalmente del sitio web de Punta Pacifica Realty. Esto es una excelente noticia. Significa que estamos convirtiendo visitantes de la web en espectadores de YouTube, atrayendo a una audiencia de altísima calidad que ya ha mostrado un interés previo en la marca. Es un embudo de conversión de audiencias que funciona a la perfección.</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-center mb-4">Métricas de "Playa Caracol"</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-sm text-gray-500">Vistas Orgánicas (Julio)</p>
+                                <p class="text-2xl font-bold">442</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">CTR (Click-Through Rate)</p>
+                                <p class="text-2xl font-bold">5.8%</p>
+                            </div>
+                             <div>
+                                <p class="text-sm text-gray-500">Porcentaje Medio Visto</p>
+                                <p class="text-2xl font-bold">32.7%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="analisis-video" class="mb-12">
+            <h2 class="section-title">Análisis de Video del Mes: "La Ruta del Éxito Turístico"</h2>
+            <div class="metric-card p-6">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="md:col-span-2">
+                        <h3 class="font-bold text-lg mb-4 brand-text">Rendimiento General</h3>
+                        <p class="text-sm text-gray-600 mb-4">Este video fue el foco principal de julio, con una fuerte inversión en YouTube Ads (99.1% de sus vistas). A pesar de esto, su rendimiento orgánico es bajo (295 vistas) y presenta un CTR del 2.0%, por debajo del promedio del canal. La adición de subtítulos en inglés no ha sido suficiente para impulsar su descubrimiento orgánico por el momento. Debemos seguir testeando nuevas portadas para aumentar ese CTR.</p>
+                        <h3 class="font-bold text-lg mb-4 brand-text">Anomalía Geográfica: Tráfico desde Pakistán</h3>
+                        <p class="text-sm text-gray-600">Un punto importante a considerar en el análisis es la fuente del tráfico. El 8.7% de las vistas (2,778) provienen de Pakistán, un mercado que no se alinea con el público objetivo principal de Punta Pacifica Realty. Esto sugiere una revisión en la segmentación de la campaña de YouTube Ads.</p>
+                    </div>
+                    <div class="bg-gray-50 p-4 rounded-lg">
+                        <h4 class="font-bold text-center mb-4">Métricas Clave</h4>
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-sm text-gray-500">Vistas Totales</p>
+                                <p class="text-2xl font-bold">33,473</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">Vistas Orgánicas</p>
+                                <p class="text-2xl font-bold">295</p>
+                            </div>
+                            <div>
+                                <p class="text-sm text-gray-500">CTR (Click-Through Rate)</p>
+                                <p class="text-2xl font-bold">2.0%</p>
+                            </div>
+                             <div>
+                                <p class="text-sm text-gray-500">Porcentaje Medio Visto</p>
+                                <p class="text-2xl font-bold">5.6%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="analisis-audiencia" class="mb-12">
+            <h2 class="section-title">Audiencia Clave: ¿Quién Nos Está Viendo?</h2>
+            <div class="metric-card p-6">
+                <p class="text-gray-600 mb-4">El análisis de la audiencia del canal revela una oportunidad estratégica clave: identificar a nuestro público de mayor valor. Si bien mercados como Venezuela generan un gran volumen de vistas, el público de <strong>Estados Unidos</strong> destaca por su combinación única de un volumen considerable y una retención excepcionalmente alta (39.3%), alineándose directamente con el perfil de cliente ideal para bienes raíces de lujo. Hay que seguir apuntando a Norteamérica y países que relevantes para Punta Pacifica Realty.</p>
+                <div class="text-center">
+                    <button id="openAudienceModalBtn" class="action-button">Ver Análisis Detallado de Audiencia</button>
+                </div>
+            </div>
+        </section>
+
+        <section id="seguimiento-metas" class="mb-12">
+            <h2 class="section-title">Seguimiento de Metas de Junio</h2>
+             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="metric-card p-4">
+                    <h3 class="font-bold text-lg mb-3 brand-text">🎯 Capitalizar Aprendizaje</h3>
+                    <p class="text-sm mb-3">Se aplicaron subtítulos en inglés al video principal.</p>
+                    <span class="status-badge status-cumplido mt-auto">Cumplido</span>
+                </div>
+                <div class="metric-card p-4">
+                    <h3 class="font-bold text-lg mb-3 brand-text">🤝 Potenciar Formato Exitoso</h3>
+                    <p class="text-sm mb-3">El video "La Ruta del Éxito" se produjo en el formato de entrevista recomendado.</p>
+                    <span class="status-badge status-cumplido mt-auto">Cumplido</span>
+                </div>
+                <div class="metric-card p-4">
+                    <h3 class="font-bold text-lg mb-3 brand-text">▶️ Optimizar Miniaturas</h3>
+                    <p class="text-sm mb-3">Se optimizaron videos y se compartió un <a href="https://panzerbero.github.io/Reportes/OptimizacionJulio.html" target="_blank" class="text-teal-600 hover:underline">reporte de rendimiento.</a></p>
+                    <span class="status-badge status-cumplido mt-auto">Cumplido</span>
+                </div>
+                 <div class="metric-card p-4">
+                    <h3 class="font-bold text-lg mb-3 brand-text">🔗 Foco en Búsqueda (SEO)</h3>
+                    <p class="text-sm mb-3">Se sigue testeando el video "La Ruta del Éxito" con palabras clave para mejorar el tráfico orgánico.</p>
+                    <span class="status-badge status-en-proceso mt-auto">En Proceso</span>
+                </div>
+            </div>
+        </section>
+
+        <section id="plan">
+            <h2 class="section-title">Plan de Acción para Agosto 2025</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div class="metric-card p-6 bg-red-50 border-l-4 border-red-500">
+                    <h3 class="font-bold text-lg mb-2 text-red-800">1. Revisión Campaña de Ads</h3>
+                    <p class="text-sm">Revisar la segmentación geográfica de la campaña del video "La Ruta del Éxito". Excluir países como Pakistán y otros que no pertenezcan al público objetivo para optimizar la inversión y mejorar la calidad del tráfico.</p>
+                </div>
+                <div class="metric-card p-6">
+                    <h3 class="font-bold text-lg mb-2 brand-text">2. Enfocar Contenido en la Audiencia de EE. UU.</h3>
+                    <p class="text-sm">Dado el alto y constante engagement, crear un video específicamente diseñado para el público estadounidense. Temas sugeridos: "Moving to Panama from the US" o "Panama's Tax Incentives for American Expats".</p>
+                </div>
+                <div class="metric-card p-6">
+                    <h3 class="font-bold text-lg mb-2 brand-text">3. Capitalizar el Éxito Web-YouTube</h3>
+                    <p class="text-sm">Crear más videos de propiedades específicas como el de "Playa Caracol" e integrarlos de manera prominente en sus respectivas páginas del sitio web para replicar el embudo de tráfico de alta calidad.</p>
+                </div>
+                <div class="metric-card p-6">
+                    <h3 class="font-bold text-lg mb-2 brand-text">4. Impulsar el Webinar</h3>
+                    <p class="text-sm">Crear 2-3 videoclips cortos (Shorts) a partir de los puntos más interesantes del webinar del 19 de julio y publicarlos para generar interés y dirigir tráfico cualificado al contenido completo.</p>
+                </div>
+                <div class="metric-card p-6">
+                    <h3 class="font-bold text-lg mb-2 brand-text">5. Potenciar Encuestas en Comunidad</h3>
+                    <p class="text-sm">Dado que las encuestas tienen la tasa de respuesta más alta, lanzar al menos dos encuestas por semana para mantener a la comunidad activa y recopilar información sobre sus intereses.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+    
+    <!-- Modal para Análisis de Audiencia -->
+    <div id="audienceModal" class="modal-overlay hidden">
+        <div class="modal-content">
+            <span id="closeAudienceModalBtn" class="modal-close">&times;</span>
+            <h2 class="section-title">Análisis Detallado de Audiencia</h2>
+            <div class="space-y-6">
+                <div>
+                    <h3 class="text-xl font-bold mb-3 brand-text">El Valor Real: Cruce de Vistas vs. Retención</h3>
+                    <p class="text-sm mb-3 text-gray-600">Un análisis profundo no solo mira quién nos ve, sino quién realmente se queda. Al cruzar el volumen de vistas con el porcentaje de retención, identificamos nuestro público más valioso y las mayores oportunidades.</p>
+                </div>
+                <div class="bg-gray-50 p-4 rounded-lg border">
+                     <h4 class="font-semibold text-gray-800 mb-3">Rendimiento Geográfico Anual (Ene-Jul 2025):</h4>
+                     <table class="w-full text-sm text-left">
+                        <thead class="text-xs text-gray-700 uppercase bg-gray-200">
+                            <tr>
+                                <th scope="col" class="px-4 py-2">País</th>
+                                <th scope="col" class="px-4 py-2 text-center">% Vistas Anual</th>
+                                <th scope="col" class="px-4 py-2 text-center">% Retención Anual</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b bg-green-50">
+                                <td class="px-4 py-2 font-medium text-green-700">Estados Unidos</td>
+                                <td class="px-4 py-2 text-center font-bold text-green-700">2.6%</td>
+                                <td class="px-4 py-2 text-center font-bold text-green-700">39.3%</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="px-4 py-2 font-medium text-gray-900">Venezuela</td>
+                                <td class="px-4 py-2 text-center">16.9%</td>
+                                <td class="px-4 py-2 text-center">54.3%</td>
+                            </tr>
+                            <tr class="border-b">
+                                <td class="px-4 py-2 font-medium text-gray-900">Panamá</td>
+                                <td class="px-4 py-2 text-center">1.8%</td>
+                                <td class="px-4 py-2 text-center">28.8%</td>
+                            </tr>
+                             <tr class="border-b bg-yellow-50">
+                                <td class="px-4 py-2 font-medium text-yellow-700">Zimbabue (Anomalía Positiva)</td>
+                                <td class="px-4 py-2 text-center text-yellow-700">0.2%</td>
+                                <td class="px-4 py-2 text-center font-bold text-yellow-700">81.5%</td>
+                            </tr>
+                            <tr class="bg-red-50">
+                                <td class="px-4 py-2 font-medium text-red-700">Pakistán (Anomalía Negativa)</td>
+                                <td class="px-4 py-2 text-center text-red-700">3.2%</td>
+                                <td class="px-4 py-2 text-center font-bold text-red-700">28.8%</td>
+                            </tr>
+                        </tbody>
+                     </table>
+                </div>
+                <div>
+                    <h3 class="text-xl font-bold mb-3 brand-text">Conclusión Estratégica</h3>
+                    <p class="text-sm text-gray-600">Los datos nos cuentan una historia clara. Nuestro público más valioso, el que combina un <strong>volumen de vistas considerable con un interés genuino (alta retención)</strong>, está en <strong>Estados Unidos</strong>. Aunque países como Venezuela aportan muchas vistas, es el público estadounidense el que demuestra el tipo de engagement que se traduce en clientes potenciales para bienes raíces de lujo. <br><br> Curiosidades como Zimbabue, con una retención altísima pero casi sin volumen, nos sirven de brújula: nos muestran qué tipo de contenido engancha al máximo, aunque ese público no sea nuestro objetivo. La lección es contundente: debemos <strong>dejar de invertir en audiencias que no nos suman</strong>, como la de Pakistán, y <strong>concentrar todos nuestros esfuerzos</strong>, tanto en pauta como en creación de contenido, en el mercado que ya nos demostró que nos valora: <strong>Estados Unidos</strong>.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="text-center p-6 mt-8 border-t">
+        <p class="text-gray-500 text-sm">&copy; 2025 Punta Pacifica Realty | Reporte generado para uso interno.</p>
+    </footer>
+
+    <script>
+        // --- DATOS PARA GRÁFICOS ---
+        const julioData = {
+            vistas: 8984,
+            suscriptores: 226,
+        };
+
+        // Gráfico 1: Evolución de Vistas Orgánicas (ANUAL)
+        const vistasData = {
+            labels: ['Ago 24', 'Sep', 'Oct', 'Nov', 'Dic', 'Ene 25', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul'],
+            values: [13628, 13845, 11474, 11929, 11115, 12188, 13533, 10799, 13313, 11617, 10285, julioData.vistas]
+        };
+        const vistasCtx = document.getElementById('vistasChart').getContext('2d');
+        new Chart(vistasCtx, {
+            type: 'bar',
+            data: {
+                labels: vistasData.labels,
+                datasets: [{
+                    label: 'Vistas Orgánicas',
+                    data: vistasData.values,
+                    backgroundColor: 'rgba(0, 151, 167, 0.7)', 
+                    borderColor: 'rgba(0, 151, 167, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: { y: { beginAtZero: true } },
+                responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }
+            }
+        });
+        
+        // Gráfico 2: Evolución de Suscriptores (Anual)
+        const suscriptoresData = {
+            labels: ['Ago 24', 'Sep', 'Oct', 'Nov', 'Dic', 'Ene 25', 'Feb', 'Mar', 'Abr', 'May', 'Jun', 'Jul'],
+            values: [73, 57, 53, 74, 76, 69, 74, 109, 70, 108, 94, julioData.suscriptores]
+        };
+        const suscriptoresCtx = document.getElementById('suscriptoresChart').getContext('2d');
+        new Chart(suscriptoresCtx, {
+            type: 'bar',
+            data: {
+                labels: suscriptoresData.labels,
+                datasets: [{
+                    label: 'Suscriptores',
+                    data: suscriptoresData.values,
+                    backgroundColor: 'rgba(16, 185, 129, 0.7)',
+                    borderColor: 'rgba(16, 185, 129, 1)',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: { y: { beginAtZero: true } },
+                responsive: true, maintainAspectRatio: false, plugins: { legend: { display: false } }
+            }
+        });
+
+        // --- LÓGICA DE MODAL ---
+        const openAudienceModalBtn = document.getElementById('openAudienceModalBtn');
+        const closeAudienceModalBtn = document.getElementById('closeAudienceModalBtn');
+        const audienceModal = document.getElementById('audienceModal');
+
+        openAudienceModalBtn.addEventListener('click', () => audienceModal.classList.remove('hidden'));
+        closeAudienceModalBtn.addEventListener('click', () => audienceModal.classList.add('hidden'));
+        audienceModal.addEventListener('click', (event) => {
+            if (event.target === audienceModal) audienceModal.classList.add('hidden');
+        });
+    </script>
+
+</body>
+</html>
