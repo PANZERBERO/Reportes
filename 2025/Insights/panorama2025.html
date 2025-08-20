@@ -1,236 +1,283 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Presentación: Insights de YouTube 2025</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f1f5f9; /* slate-100 */
-            overflow: hidden; /* Prevent scrolling */
-        }
-        .brand-bg { 
-            background-color: #0097A7;
-            background-image: linear-gradient(to right, #0097A7, #00796B);
-        }
-        .brand-text { color: #0097A7; }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Presentación: Insights de YouTube 2025</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f1f5f9; /* slate-100 */
+      overflow: hidden; /* evita scroll entre slides */
+    }
+    .brand-bg {
+      background-color: #0097A7;
+      background-image: linear-gradient(to right, #0097A7, #00796B);
+    }
+    .brand-text { color: #0097A7; }
 
-        /* --- Slide Structure --- */
-        .slide {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            padding: 2rem;
-            opacity: 0;
-            visibility: hidden;
-            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
-            transform: scale(0.95);
-        }
-        .slide.active {
-            opacity: 1;
-            visibility: visible;
-            transform: scale(1);
-        }
-        
-        /* --- Animation for slide content --- */
-        .slide.active .animate-item {
-            opacity: 0;
-            transform: translateY(20px);
-            animation: slide-up 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
-        }
-        @keyframes slide-up {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        /* --- Navigation Buttons --- */
-        .nav-btn {
-            position: fixed;
-            top: 50%;
-            transform: translateY(-50%);
-            background-color: rgba(0, 0, 0, 0.3);
-            color: white;
-            border-radius: 50%;
-            width: 3rem;
-            height: 3rem;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-            z-index: 10;
-        }
-        .nav-btn:hover {
-            background-color: rgba(0, 0, 0, 0.5);
-        }
-        #prev-btn { left: 1rem; }
-        #next-btn { right: 1rem; }
+    /* ---- Slides ---- */
+    .slide {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      justify-content: center; align-items: center;
+      padding: 2rem;
+      opacity: 0; visibility: hidden;
+      transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+      transform: scale(0.95);
+    }
+    .slide.active {
+      opacity: 1; visibility: visible; transform: scale(1);
+    }
 
-        /* --- Slide Counter & Header --- */
-        #slide-counter {
-            position: fixed;
-            bottom: 1rem;
-            right: 1rem;
-            background-color: rgba(0, 0, 0, 0.4);
-            color: white;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.875rem;
-            z-index: 10;
-        }
-        #presentation-header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            padding: 1rem;
-            z-index: 10;
-        }
-    </style>
+    /* Animación de entrada de elementos dentro de la slide activa */
+    .slide.active .animate-item {
+      opacity: 0; transform: translateY(20px);
+      animation: slide-up 0.7s cubic-bezier(0.25,0.46,0.45,0.94) forwards;
+    }
+    @keyframes slide-up {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Navegación */
+    .nav-btn{
+      position: fixed; top: 50%; transform: translateY(-50%);
+      background-color: rgba(0,0,0,0.3); color: #fff;
+      border-radius: 9999px; width: 3rem; height: 3rem;
+      display: flex; justify-content: center; align-items: center;
+      cursor: pointer; transition: background-color .3s ease; z-index: 10;
+    }
+    .nav-btn:hover{ background-color: rgba(0,0,0,0.5); }
+    #prev-btn{ left: 1rem; } #next-btn{ right: 1rem; }
+
+    /* Contador */
+    #slide-counter{
+      position: fixed; bottom: 1rem; right: 1rem; z-index: 10;
+      background-color: rgba(0,0,0,0.4); color: #fff;
+      padding: .25rem .75rem; border-radius: 9999px; font-size: .875rem;
+    }
+    #presentation-header{
+      position: fixed; top: 0; left: 0; width: 100%; padding: 1rem; z-index: 10;
+    }
+
+    /* Iframe responsivo 16:9 para la slide 5 */
+    .embed-16x9{
+      position: relative; width: 100%; max-width: 1024px; margin: 0 auto;
+    }
+    .embed-16x9::before{
+      content: ""; display: block; padding-top: 56.25%; /* 16:9 */
+    }
+    .embed-16x9 > iframe{
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      border: 0; border-radius: 0.75rem;
+      box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+    }
+
+    /* Respeta usuarios con reducción de movimiento */
+    @media (prefers-reduced-motion: reduce) {
+      .slide, .slide.active, .slide.active .animate-item { transition: none !important; animation: none !important; }
+    }
+  </style>
 </head>
 <body class="text-gray-800">
 
-    <!-- Header with Logo -->
-    <header id="presentation-header">
-        <img src="https://raw.githubusercontent.com/PANZERBERO/Reportes/main/Logo%20PPR.jpg"
-             alt="Logo de Punta Pacifica Realty"
-             class="h-12 w-auto rounded-md shadow-md">
-    </header>
+  <!-- Header con logo -->
+  <header id="presentation-header">
+    <img
+      src="https://raw.githubusercontent.com/PANZERBERO/Reportes/main/Logo%20PPR.jpg"
+      alt="Logo de Punta Pacifica Realty"
+      class="h-12 w-auto rounded-md shadow-md"
+      decoding="async"
+    >
+  </header>
 
-    <!-- Slides Container -->
-    <main id="slides-container">
-        <!-- Slide 1 -->
-        <div class="slide active brand-bg text-white text-center">
-            <h1 class="text-5xl font-extrabold animate-item" style="animation-delay: 100ms;">YouTube 2025: Primer Semestre</h1>
-            <p class="mt-6 text-2xl text-white/90 max-w-3xl animate-item" style="animation-delay: 200ms;">El panorama está cambiando rápido. El éxito ya no depende solo de los views, sino de la experiencia completa del espectador.</p>
-            <p class="mt-4 text-xl text-white/80 max-w-3xl animate-item" style="animation-delay: 300ms;">Lo que importa: cuánto tiempo pasa una persona dentro del canal y si vuelve a ver más videos.</p>
-        </div>
+  <!-- Contenedor de slides -->
+  <main id="slides-container">
+    <!-- Slide 1 -->
+    <div class="slide active brand-bg text-white text-center">
+      <h1 class="text-5xl font-extrabold animate-item" style="animation-delay: 100ms;">YouTube 2025: Primer Semestre</h1>
+      <p class="mt-6 text-2xl text-white/90 max-w-3xl animate-item" style="animation-delay: 200ms;">
+        El panorama está cambiando rápido. El éxito ya no depende solo de los <strong>views</strong>, sino de la experiencia completa del espectador.
+      </p>
+      <p class="mt-4 text-xl text-white/80 max-w-3xl animate-item" style="animation-delay: 300ms;">
+        Lo que importa: cuánto tiempo pasa una persona dentro del canal y si vuelve a ver más videos.
+      </p>
+    </div>
 
-        <!-- Slide 2 -->
-        <div class="slide bg-white text-center">
-            <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">El algoritmo mira más allá de los views</h2>
-            <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">La clave es la <strong>satisfacción del espectador</strong>. YouTube valora la retención, los likes, comentarios y que un usuario encadene varios videos en una misma sesión.</p>
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl animate-item" style="animation-delay: 300ms;">El objetivo: que el canal se convierta en un lugar al que la gente quiere regresar.</p>
-        </div>
+    <!-- Slide 2 -->
+    <div class="slide bg-white text-center">
+      <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">El algoritmo mira más allá de los views</h2>
+      <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">
+        La clave es la <strong>satisfacción del espectador</strong>. YouTube valora la retención, los likes, comentarios y que un usuario encadene varios videos en una misma sesión.
+      </p>
+      <p class="mt-4 text-lg text-gray-600 max-w-2xl animate-item" style="animation-delay: 300ms;">
+        El objetivo: que el canal se convierta en un lugar al que la gente quiere regresar.
+      </p>
+    </div>
 
-        <!-- Slide 3 -->
-        <div class="slide bg-white text-center">
-            <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">Shorts + Video Largo: la fórmula del momento</h2>
-            <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">Los <strong>Shorts</strong> son el anzuelo: generan descubrimiento y alcance masivo.</p>
-            <p class="mt-4 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 300ms;">El <strong>video largo</strong> (>10 min) es donde se construye la confianza y comunidad.</p>
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl animate-item" style="animation-delay: 400ms;">Ambos formatos funcionan en paralelo: uno atrae, el otro fideliza.</p>
-        </div>
+    <!-- Slide 3 -->
+    <div class="slide bg-white text-center">
+      <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">Shorts + Video Largo: la fórmula del momento</h2>
+      <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">
+        Los <strong>Shorts</strong> son el anzuelo: generan descubrimiento y alcance masivo.
+      </p>
+      <p class="mt-4 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 300ms;">
+        El <strong>video largo</strong> (&gt;10 min) es donde se construye la confianza y comunidad.
+      </p>
+      <p class="mt-4 text-lg text-gray-600 max-w-2xl animate-item" style="animation-delay: 400ms;">
+        Ambos formatos funcionan en paralelo: uno atrae, el otro fideliza.
+      </p>
+    </div>
 
-        <!-- Slide 4 -->
-        <div class="slide bg-white text-center">
-            <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">Del video aislado a la "franquicia digital"</h2>
-            <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">Los virales sueltos pierden peso. Hoy gana la creación de <strong>series con identidad propia</strong>, que generan anticipación y fidelidad.</p>
-            <p class="mt-4 text-lg text-gray-600 max-w-2xl animate-item" style="animation-delay: 300ms;">La audiencia ya no busca solo un buen video, sino una historia continua en la que engancharse.</p>
-        </div>
+    <!-- Slide 4 -->
+    <div class="slide bg-white text-center">
+      <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">Del video aislado a la "franquicia digital"</h2>
+      <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">
+        Los virales sueltos pierden peso. Hoy gana la creación de <strong>series con identidad propia</strong>, que generan anticipación y fidelidad.
+      </p>
+      <p class="mt-4 text-lg text-gray-600 max-w-2xl animate-item" style="animation-delay: 300ms;">
+        La audiencia ya no busca solo un buen video, sino una historia continua en la que engancharse.
+      </p>
+    </div>
 
-       <!-- Slide 5 -->
-<div class="slide bg-white text-center">
-    <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">
+    <!-- Slide 5 (con video embed responsivo) -->
+    <div class="slide bg-white text-center">
+      <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">
         El factor global: doblaje automático por IA
-    </h2>
-    <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">
+      </h2>
+      <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">
         El doblaje ya está activo en algunos canales seleccionados. Aunque aún no llega a todos, la expansión es inminente.
-    </p>
-    <p class="mt-4 text-lg text-gray-600 max-w-2xl animate-item" style="animation-delay: 300ms;">
+      </p>
+      <p class="mt-4 text-lg text-gray-600 max-w-2xl animate-item" style="animation-delay: 300ms;">
         Esto permitirá que un mismo video pueda ser visto en distintos países, sin importar el idioma. Más pronto que tarde esta función debería estar disponible también para A Spotlight to Panama.
-    </p>
-    <!-- Video embed -->
-    <div class="mt-8 w-full max-w-4xl mx-auto animate-item" style="animation-delay: 400ms;">
-        <div class="aspect-w-16 aspect-h-9">
-            <iframe 
-                class="w-full h-full rounded-lg shadow-lg"
-                src="https://www.youtube.com/embed/Z4hVGCWH1Kc" 
-                title="2,000,000 People Get Clean Water For The First Time!" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                allowfullscreen>
-            </iframe>
-        </div>
-    </div>
-</div>
-
-
-        <!-- Slide 6 -->
-        <div class="slide brand-bg text-white text-center">
-            <h2 class="text-4xl font-bold animate-item" style="animation-delay: 100ms;">Resumen del panorama 2025</h2>
-            <ul class="mt-6 text-xl space-y-3 text-left max-w-md mx-auto">
-                <li class="animate-item" style="animation-delay: 200ms;">▶ YouTube premia la <strong>satisfacción</strong> y la experiencia completa.</li>
-                <li class="animate-item" style="animation-delay: 300ms;">▶ Shorts y videos largos ya no compiten: <strong>se complementan</strong>.</li>
-                <li class="animate-item" style="animation-delay: 400ms;">▶ Las <strong>“franquicias digitales”</strong> reemplazan a los virales aislados.</li>
-                <li class="animate-item" style="animation-delay: 500ms;">▶ El <strong>doblaje por IA</strong> abre las puertas a una audiencia global.</li>
-            </ul>
-        </div>
-    </main>
-
-    <!-- Navigation -->
-    <div id="prev-btn" class="nav-btn">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
-    </div>
-    <div id="next-btn" class="nav-btn">
-        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+      </p>
+      <div class="mt-8 embed-16x9 animate-item" style="animation-delay: 400ms;">
+        <iframe
+          src="https://www.youtube.com/embed/Z4hVGCWH1Kc"
+          title="2,000,000 People Get Clean Water For The First Time!"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
 
-    <!-- Counter -->
-    <div id="slide-counter">1 / 6</div>
+    <!-- Slide 6 -->
+    <div class="slide brand-bg text-white text-center">
+      <h2 class="text-4xl font-bold animate-item" style="animation-delay: 100ms;">Resumen del panorama 2025</h2>
+      <ul class="mt-6 text-xl space-y-3 text-left max-w-md mx-auto">
+        <li class="animate-item" style="animation-delay: 200ms;">▶ YouTube premia la <strong>satisfacción</strong> y la experiencia completa.</li>
+        <li class="animate-item" style="animation-delay: 300ms;">▶ Shorts y videos largos ya no compiten: <strong>se complementan</strong>.</li>
+        <li class="animate-item" style="animation-delay: 400ms;">▶ Las <strong>“franquicias digitales”</strong> reemplazan a los virales aislados.</li>
+        <li class="animate-item" style="animation-delay: 500ms;">▶ El <strong>doblaje por IA</strong> abre las puertas a una audiencia global.</li>
+      </ul>
+    </div>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const slides = document.querySelectorAll('.slide');
-            const prevBtn = document.getElementById('prev-btn');
-            const nextBtn = document.getElementById('next-btn');
-            const slideCounter = document.getElementById('slide-counter');
-            
-            let currentSlide = 0;
-            const totalSlides = slides.length;
+    <!-- Slide 7 -->
+    <div class="slide bg-white text-center">
+      <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">
+        ¿Cómo podríamos aplicar las tendencias 2025 en A Spotlight to Panama?
+      </h2>
+      <ul class="mt-6 text-xl text-gray-700 space-y-3 max-w-2xl mx-auto">
+        <li class="animate-item" style="animation-delay: 200ms;">▶ Integrar <strong>Shorts</strong> como puerta de entrada y dirigir hacia contenido largo.</li>
+        <li class="animate-item" style="animation-delay: 300ms;">▶ Conectar videos de propiedades con videos de localidades para cruzar audiencias.</li>
+        <li class="animate-item" style="animation-delay: 400ms;">▶ Preparar terreno para el <strong>doblaje IA</strong>, abriendo el canal a una audiencia global.</li>
+        <li class="animate-item" style="animation-delay: 500ms;">▶ Crear <strong>series temáticas</strong> que construyan comunidad y fidelidad.</li>
+      </ul>
+    </div>
 
-            function showSlide(index) {
-                slides.forEach(slide => {
-                    slide.classList.remove('active');
-                });
-                slides[index].classList.add('active');
-                slideCounter.textContent = `${index + 1} / ${totalSlides}`;
-            }
+    <!-- Slide 8 -->
+    <div class="slide bg-white text-center">
+      <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">La Franquicia Digital en A Spotlight to Panama</h2>
+      <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">
+        <strong>Definición:</strong> no son videos aislados, sino una <em>serie con identidad propia</em> que genera expectativa y retención.
+      </p>
+      <ul class="mt-4 text-lg text-gray-600 space-y-3 max-w-2xl mx-auto">
+        <li class="animate-item" style="animation-delay: 300ms;">▶ El público regresa esperando el siguiente capítulo.</li>
+        <li class="animate-item" style="animation-delay: 400ms;">▶ Más tiempo de visualización dentro del canal.</li>
+        <li class="animate-item" style="animation-delay: 500ms;">▶ Se construye una marca narrativa: <em>Spotlight se transforma en “la serie sobre Panamá”.</em></li>
+      </ul>
+      <p class="mt-6 text-lg text-gray-700 max-w-2xl animate-item" style="animation-delay: 600ms;">
+        <strong>Ejemplo:</strong> Una mini-serie sobre <em>“Las 5 mejores playas para vivir en Panamá”</em> con un episodio semanal.
+      </p>
+    </div>
 
-            function nextSlide() {
-                currentSlide = (currentSlide + 1) % totalSlides;
-                showSlide(currentSlide);
-            }
+    <!-- Slide 9 -->
+    <div class="slide bg-white text-center">
+      <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">Ejemplo aplicado al público objetivo</h2>
+      <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">
+        <strong>Target:</strong> Hombres y mujeres 55+, en camino a jubilación, interesados en segunda vivienda.
+      </p>
+      <ul class="mt-6 text-lg text-gray-600 space-y-3 max-w-2xl mx-auto">
+        <li class="animate-item" style="animation-delay: 300ms;">▶ <strong>Capítulo 1:</strong> Cómo obtener tu visa de residencia en Panamá.</li>
+        <li class="animate-item" style="animation-delay: 400ms;">▶ <strong>Capítulo 2:</strong> Las mejores zonas para comprar tu segunda vivienda.</li>
+        <li class="animate-item" style="animation-delay: 500ms;">▶ <strong>Capítulo 3:</strong> El proceso de compra: lo que debes saber paso a paso.</li>
+        <li class="animate-item" style="animation-delay: 600ms;">▶ <strong>Capítulo 4:</strong> Viviendo en Panamá: salud, cultura y comunidad de expatriados.</li>
+      </ul>
+      <p class="mt-6 text-lg text-gray-700 max-w-2xl animate-item" style="animation-delay: 700ms;">
+        👉 En cada capítulo, Ana Patricia puede cerrar diciendo:
+        <em>“Si te interesa este tema, en el próximo episodio te contaré [lo que viene]. No te lo pierdas en A Spotlight to Panama.”</em>
+      </p>
+    </div>
+  </main>
 
-            function prevSlide() {
-                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
-                showSlide(currentSlide);
-            }
+  <!-- Navegación -->
+  <div id="prev-btn" class="nav-btn" aria-label="Slide anterior" role="button">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path>
+    </svg>
+  </div>
+  <div id="next-btn" class="nav-btn" aria-label="Siguiente slide" role="button">
+    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path>
+    </svg>
+  </div>
 
-            nextBtn.addEventListener('click', nextSlide);
-            prevBtn.addEventListener('click', prevSlide);
+  <!-- Contador -->
+  <div id="slide-counter" aria-live="polite">1 / 9</div>
 
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'ArrowRight') {
-                    nextSlide();
-                } else if (e.key === 'ArrowLeft') {
-                    prevSlide();
-                }
-            });
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slides = document.querySelectorAll('.slide');
+      const prevBtn = document.getElementById('prev-btn');
+      const nextBtn = document.getElementById('next-btn');
+      const slideCounter = document.getElementById('slide-counter');
 
-            showSlide(currentSlide);
-        });
-    </script>
+      let currentSlide = 0;
+      const totalSlides = slides.length;
 
+      function showSlide(index){
+        slides.forEach(s => s.classList.remove('active'));
+        slides[index].classList.add('active');
+        slideCounter.textContent = `${index + 1} / ${totalSlides}`;
+      }
+
+      function nextSlide(){ currentSlide = (currentSlide + 1) % totalSlides; showSlide(currentSlide); }
+      function prevSlide(){ currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; showSlide(currentSlide); }
+
+      nextBtn.addEventListener('click', nextSlide);
+      prevBtn.addEventListener('click', prevSlide);
+
+      document.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight') nextSlide();
+        else if (e.key === 'ArrowLeft') prevSlide();
+      });
+
+      // Soporte básico de swipe en móvil
+      let startX = null;
+      document.addEventListener('touchstart', (e) => { startX = e.touches[0].clientX; }, {passive:true});
+      document.addEventListener('touchend', (e) => {
+        if(startX === null) return;
+        const deltaX = e.changedTouches[0].clientX - startX;
+        if(Math.abs(deltaX) > 50){ deltaX < 0 ? nextSlide() : prevSlide(); }
+        startX = null;
+      }, {passive:true});
+
+      showSlide(currentSlide);
+    });
+  </script>
 </body>
 </html>
