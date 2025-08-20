@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Presentación: Insights de YouTube 2025</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f1f5f9; /* slate-100 */
+            overflow: hidden; /* Prevent scrolling */
+        }
+        .brand-bg { 
+            background-color: #0097A7;
+            background-image: linear-gradient(to right, #0097A7, #00796B);
+        }
+        .brand-text { color: #0097A7; }
+
+        /* --- Slide Structure --- */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.6s ease-in-out, transform 0.6s ease-in-out;
+            transform: scale(0.95);
+        }
+        .slide.active {
+            opacity: 1;
+            visibility: visible;
+            transform: scale(1);
+        }
+        
+        /* --- Animation for slide content --- */
+        .slide.active .animate-item {
+            opacity: 0;
+            transform: translateY(20px);
+            animation: slide-up 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+        @keyframes slide-up {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* --- Navigation Buttons --- */
+        .nav-btn {
+            position: fixed;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: rgba(0, 0, 0, 0.3);
+            color: white;
+            border-radius: 50%;
+            width: 3rem;
+            height: 3rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            z-index: 10;
+        }
+        .nav-btn:hover {
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        #prev-btn { left: 1rem; }
+        #next-btn { right: 1rem; }
+
+        /* --- Slide Counter & Header --- */
+        #slide-counter {
+            position: fixed;
+            bottom: 1rem;
+            right: 1rem;
+            background-color: rgba(0, 0, 0, 0.4);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.875rem;
+            z-index: 10;
+        }
+        #presentation-header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            z-index: 10;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <!-- Header with Logo -->
+    <header id="presentation-header">
+        <img src="https://raw.githubusercontent.com/PANZERBERO/Reportes/main/Logo%20PPR.jpg"
+             alt="Logo de Punta Pacifica Realty"
+             class="h-12 w-auto rounded-md shadow-md">
+    </header>
+
+    <!-- Slides Container -->
+    <main id="slides-container">
+        <!-- Slide 1 -->
+        <div class="slide active brand-bg text-white text-center">
+            <h1 class="text-5xl font-extrabold animate-item" style="animation-delay: 100ms;">YouTube 2025: Primer Semestre</h1>
+            <p class="mt-6 text-2xl text-white/90 max-w-3xl animate-item" style="animation-delay: 200ms;">El panorama está cambiando rápido. El éxito ya no depende solo de los views, sino de la experiencia completa del espectador.</p>
+            <p class="mt-4 text-xl text-white/80 max-w-3xl animate-item" style="animation-delay: 300ms;">Lo que importa: cuánto tiempo pasa una persona dentro del canal y si vuelve a ver más videos.</p>
+        </div>
+
+        <!-- Slide 2 -->
+        <div class="slide bg-white text-center">
+            <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">El algoritmo mira más allá de los views</h2>
+            <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">La clave es la <strong>satisfacción del espectador</strong>. YouTube valora la retención, los likes, comentarios y que un usuario encadene varios videos en una misma sesión.</p>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl animate-item" style="animation-delay: 300ms;">El objetivo: que el canal se convierta en un lugar al que la gente quiere regresar.</p>
+        </div>
+
+        <!-- Slide 3 -->
+        <div class="slide bg-white text-center">
+            <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">Shorts + Video Largo: la fórmula del momento</h2>
+            <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">Los <strong>Shorts</strong> son el anzuelo: generan descubrimiento y alcance masivo.</p>
+            <p class="mt-4 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 300ms;">El <strong>video largo</strong> (>10 min) es donde se construye la confianza y comunidad.</p>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl animate-item" style="animation-delay: 400ms;">Ambos formatos funcionan en paralelo: uno atrae, el otro fideliza.</p>
+        </div>
+
+        <!-- Slide 4 -->
+        <div class="slide bg-white text-center">
+            <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">Del video aislado a la "franquicia digital"</h2>
+            <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">Los virales sueltos pierden peso. Hoy gana la creación de <strong>series con identidad propia</strong>, que generan anticipación y fidelidad.</p>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl animate-item" style="animation-delay: 300ms;">La audiencia ya no busca solo un buen video, sino una historia continua en la que engancharse.</p>
+        </div>
+
+        <!-- Slide 5 -->
+        <div class="slide bg-white text-center">
+            <h2 class="text-4xl font-bold brand-text animate-item" style="animation-delay: 100ms;">El factor global: doblaje automático por IA</h2>
+            <p class="mt-6 text-xl text-gray-700 max-w-2xl animate-item" style="animation-delay: 200ms;">El doblaje ya está activo en algunos canales seleccionados. Aunque aún no llega a todos, la expansión es inminente.</p>
+            <p class="mt-4 text-lg text-gray-600 max-w-2xl animate-item" style="animation-delay: 300ms;">Esto permitirá que un mismo video pueda ser visto en distintos países, sin importar el idioma. Más pronto que tarde esta función debería estar disponible también para A Spotlight to Panama.</p>
+        </div>
+
+        <!-- Slide 6 -->
+        <div class="slide brand-bg text-white text-center">
+            <h2 class="text-4xl font-bold animate-item" style="animation-delay: 100ms;">Resumen del panorama 2025</h2>
+            <ul class="mt-6 text-xl space-y-3 text-left max-w-md mx-auto">
+                <li class="animate-item" style="animation-delay: 200ms;">▶ YouTube premia la <strong>satisfacción</strong> y la experiencia completa.</li>
+                <li class="animate-item" style="animation-delay: 300ms;">▶ Shorts y videos largos ya no compiten: <strong>se complementan</strong>.</li>
+                <li class="animate-item" style="animation-delay: 400ms;">▶ Las <strong>“franquicias digitales”</strong> reemplazan a los virales aislados.</li>
+                <li class="animate-item" style="animation-delay: 500ms;">▶ El <strong>doblaje por IA</strong> abre las puertas a una audiencia global.</li>
+            </ul>
+        </div>
+    </main>
+
+    <!-- Navigation -->
+    <div id="prev-btn" class="nav-btn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+    </div>
+    <div id="next-btn" class="nav-btn">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
+    </div>
+
+    <!-- Counter -->
+    <div id="slide-counter">1 / 6</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slides = document.querySelectorAll('.slide');
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            const slideCounter = document.getElementById('slide-counter');
+            
+            let currentSlide = 0;
+            const totalSlides = slides.length;
+
+            function showSlide(index) {
+                slides.forEach(slide => {
+                    slide.classList.remove('active');
+                });
+                slides[index].classList.add('active');
+                slideCounter.textContent = `${index + 1} / ${totalSlides}`;
+            }
+
+            function nextSlide() {
+                currentSlide = (currentSlide + 1) % totalSlides;
+                showSlide(currentSlide);
+            }
+
+            function prevSlide() {
+                currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+                showSlide(currentSlide);
+            }
+
+            nextBtn.addEventListener('click', nextSlide);
+            prevBtn.addEventListener('click', prevSlide);
+
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'ArrowRight') {
+                    nextSlide();
+                } else if (e.key === 'ArrowLeft') {
+                    prevSlide();
+                }
+            });
+
+            showSlide(currentSlide);
+        });
+    </script>
+
+</body>
+</html>
